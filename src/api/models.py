@@ -11,6 +11,7 @@ class User(db.Model):
     name = db.Column(db.String(80), nullable=False)
     lastName = db.Column(db.String(120), unique=True, nullable=False)
     
+    
 
     def __repr__(self):
         return '<User %r>' % self.email
@@ -25,10 +26,10 @@ class User(db.Model):
 class Moto(db.Model):
     __tablename__= 'moto'
     id = db.Column(db.Integer, primary_key=True)
-    #modelo1 = db.Column(db.String(120), nullable=False)
+    modelo1 = db.Column(db.String(120), nullable=False)
     power = db.Column(db.Integer, nullable=False)
     brand = db.Column(db.String(120), nullable=False)
-   # tipo1 = db.Column(db.String(120), nullable=False)
+    tipo1 = db.Column(db.String(120), nullable=False)
     priceday = db.Column(db.Integer, nullable=False)
     priceweek = db.Column(db.Integer, nullable=False)
     discount1 = db.Column(db.Integer, nullable=False)
@@ -45,6 +46,8 @@ class Moto(db.Model):
         nullable=False) 
     user = db.relationship('User', backref='user', lazy=True)
 
+
+
     def __repr__(self):
         return '<Moto %r>' % self.id
 
@@ -58,21 +61,40 @@ class Modelo(db.Model):
     def __repr__(self):
         return '<Modelo %r>' % self.id
 
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+        }
+
 class Tipo(db.Model):
     __tablename__= 'tipo'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(120), primary_key=True)
+    name = db.Column(db.String(120), nullable=False)
 
 
     def __repr__(self):
         return '<Tipo %r>' % self.id
 
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+        }
+
+
 class Marca(db.Model):
     __tablename__= 'marca'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(120), primary_key=True)
+    name = db.Column(db.String(120), nullable=False)
 
     
 
     def __repr__(self):
         return '<Marca %r>' % self.id
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+        }
