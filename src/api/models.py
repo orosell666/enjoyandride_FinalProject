@@ -10,7 +10,7 @@ class User(db.Model):
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
     name = db.Column(db.String(80), nullable=False)
     lastName = db.Column(db.String(120), unique=True, nullable=False)
-    
+    phonenumber = db.Column(db.String(120), unique=True, nullable=False) 
 
     def __repr__(self):
         return '<User %r>' % self.email
