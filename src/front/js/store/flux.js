@@ -13,7 +13,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				// fetching data from the backend
 				console.log(email, password);
 
-				fetch(process.env.BACKEND_URL + "/token", {
+				//fetch(process.env.BACKEND_URL + "/token", {
+				fetch("https://3001-orosell666-enjoyandride-yhkj778dcml.ws-eu38.gitpod.io/api/token", {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify({ email: email, password: password }),

@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 12dd3160ef2d
+Revision ID: 95f5617e6785
 Revises: 
-Create Date: 2022-03-25 18:58:13.420921
+Create Date: 2022-03-30 12:22:09.527378
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '12dd3160ef2d'
+revision = '95f5617e6785'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -38,7 +38,7 @@ def upgrade():
     sa.Column('phonenumber', sa.String(length=120), nullable=False),
     sa.Column('license', sa.String(length=120), nullable=False),
     sa.Column('adress', sa.String(length=120), nullable=False),
-    sa.Column('birthdate', sa.String(length=120), nullable=False),
+    sa.Column('birthdate', sa.DateTime(), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('license'),
@@ -53,21 +53,22 @@ def upgrade():
     )
     op.create_table('moto',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('modelo1', sa.String(length=120), nullable=False),
     sa.Column('power', sa.Integer(), nullable=False),
-    sa.Column('brand', sa.String(length=120), nullable=False),
-    sa.Column('tipo1', sa.String(length=120), nullable=False),
     sa.Column('priceday', sa.Integer(), nullable=False),
     sa.Column('priceweek', sa.Integer(), nullable=False),
-    sa.Column('discount1', sa.Integer(), nullable=True),
-    sa.Column('discount2', sa.Integer(), nullable=True),
-    sa.Column('comment', sa.String(length=300), nullable=True),
+    sa.Column('discount_weekend', sa.Integer(), nullable=True),
+    sa.Column('discount_week', sa.Integer(), nullable=True),
     sa.Column('provincia', sa.String(length=300), nullable=False),
     sa.Column('ciudad', sa.String(length=300), nullable=False),
     sa.Column('direccion', sa.String(length=300), nullable=False),
     sa.Column('latitud', sa.Integer(), nullable=False),
     sa.Column('longitud', sa.Integer(), nullable=False),
+    sa.Column('comment', sa.String(length=7), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('modelo_id', sa.Integer(), nullable=False),
+    sa.Column('tipo_id', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['modelo_id'], ['modelo.id'], ),
+    sa.ForeignKeyConstraint(['tipo_id'], ['tipo.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
     sa.PrimaryKeyConstraint('id', 'latitud', 'longitud')
     )
