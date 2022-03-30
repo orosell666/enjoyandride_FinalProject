@@ -6,6 +6,7 @@ from api.models import db, User
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
+from datetime import datetime
 
 
 api = Blueprint('api', __name__)
@@ -34,6 +35,37 @@ def login():
         "color": "success"
     }
     return jsonify(data_response), 200
+
+
+@api.route('/registroUsuarios', methods=['POST'])
+def registro():
+    email = request.json.get('email')
+    password = request.json.get('password')
+    name = request.json.get('name')
+    lastName = request.json.get('lastName')
+    phonenumber = request.json.get('phonenumber')
+    license = request.json.get('license')
+    adress = request.json.get('adress')
+    birthdate = request.json.get('birthdate')
+    birthdate = datetime.strptime(birthdate, '%d/%m/%Y') #la fecha hay que escribirla asi: ida/mes/año 2/5/2025
+
+
+    user = User(email= email , password= password, name= name, lastName= lastName, phonenumber= phonenumber, license= license, adress= adress, birthdate= birthdate, is_active= True)
+    db.session.add(user)
+    db.session.commit()
+
+    data_response= {
+        "email": user.email,
+        "password": user.password,
+        "name": user.name,
+        "lastName": user.lastName,
+        "phonenumber": user.phonenumber,
+        "license": user.license,
+        "adress": user.adress,
+        "birthdate": user.birthdate
+    }
+    return jsonify(data_response), 200
+
 
 
 @api.route('/hello', methods=['POST', 'GET'])
