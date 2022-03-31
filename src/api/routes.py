@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User
+from api.models import db, User, Moto
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
@@ -47,6 +47,7 @@ def registro():
     license = request.json.get('license')
     adress = request.json.get('adress')
     birthdate = request.json.get('birthdate')
+    print(request.json)
     birthdate = datetime.strptime(birthdate, '%d/%m/%Y') #la fecha hay que escribirla asi: ida/mes/año 2/5/2025
 
 
@@ -68,7 +69,7 @@ def registro():
 
 @api.route('/registroMoto', methods=['POST'])
 def registroMoto():
-    power = request.json.get('email')
+    power = request.json.get('power')
     priceday = request.json.get('priceday')
     priceweek = request.json.get('priceweek')
     discount_weekend = request.json.get('discount_weekend')
@@ -76,11 +77,15 @@ def registroMoto():
     comment = request.json.get('comment')
     provincia = request.json.get('provincia')
     ciudad = request.json.get('ciudad')
-    direccion = request.json.get('direccion')
+    
     latitud = request.json.get('latitud')
     longitud = request.json.get('longitud')
+    matricula = request.json.get('matricula')
+    modelo_id = request.json.get('modelo_id')
+    tipo_id = request.json.get('tipo_id')
 
-    moto = Moto(power= power, priceday= priceday, priceweek= priceweek, discount_weekend= discount_weekend, discount_week= discount_week, comment= comment, provincia= provincia, ciudad= ciudad, direccion= direccion, latitud= latitud, longitud= longitud)
+    moto = Moto(power= power, priceday= priceday, priceweek= priceweek, discount_weekend= discount_weekend, discount_week= discount_week, comment= comment, provincia= provincia, 
+    ciudad= ciudad, latitud= latitud, longitud= longitud,  modelo_id= modelo_id, tipo_id= tipo_id, user_id= 1)
     db.session.add(moto)
     db.session.commit()
 
@@ -100,7 +105,28 @@ def registroMoto():
     return jsonify(data_response), 200
 
 
+@api.route('/marca', methods=['POST'])
+def loadMarca():
+    name = request.json.get('name')
 
+    marca = Marca(name= name)
+    db.session.add(marca)
+    db.session.commit()
+
+    data_response= {
+        "name": marca.name
+    }
+    return jsonify(data_response), 200
+
+@api.route('/marca', methods=['GET'])
+def getMarca():
+    
+    marcas = Marca.query.all()
+    listadoMarcas = []
+    for marca in marcas:
+        listadoMarcas.append(marca.serialize()) 
+
+    return jsonify(listadoMarcas), 200
 
 @api.route('/hello', methods=['POST', 'GET'])
 def handle_hello():

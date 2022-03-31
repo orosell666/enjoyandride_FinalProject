@@ -51,10 +51,10 @@ export const Register = () => {
                 </div>
                 <div className="col mt-2">
                     <label for="formGroupExampleInput" className="form-label">Dirección</label>
-                    <input type="text" className="form-control" placeholder="C/ Unica 23, 0000, Ciudad, Provincia" aria-label="Last name" />
+                    <input type="text" className="form-control" placeholder="C/ Unica 23, 0000, Ciudad, Provincia" aria-label="Last name" name="adress" onChange={(e) => changeData(e)} />
                 </div>
             </div>
-            <button type="button" className="btn btn-primary" onClick={() => {
+            <button type="button" className="btn btn-primary mt-5" onClick={() => {
                 actions.generateRegister(user)
 
             }}>Enviar</button>

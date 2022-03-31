@@ -24,26 +24,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.log("Error loading message from backend", error));
 			},
 
-			generateRegister: (email, password, name, lastName, phonenumber, license, adress, birthdate) => {
+			generateRegister: (user) => {
 				fetch("https://3001-orosell666-enjoyandride-6dw8fl5jqe2.ws-eu38.gitpod.io/api/registroUsuarios", {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify({ email: email, password: password, name: name, lastName: lastName, phonenumber: phonenumber, license: license, adress: adress, birthdate: birthdate }),
+					body: JSON.stringify(user),
 				})
 					.then(resp => resp.json())
 					.then(data => setStore({ respuesta: data }))
 					.catch(error => console.log("Error loading message from backend", error));
 			},
 
-			generateMoto: (power, priceday, priceweek, discount_weekend, discount_week, comment, provincia, ciudad, direccion, latitud, longitud) =>
+			generateMoto: (moto) =>
 				fetch("https://3001-orosell666-enjoyandride-6dw8fl5jqe2.ws-eu38.gitpod.io/api/registroMoto", {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify({ power: power, priceday: priceday, priceweek: priceweek, discount_weekend: discount_weekend, discount_week: discount_week, comment: comment, provincia: provincia, ciudad: ciudad, direccion: direccion, latitud: latitud, longitud: longitud }),
+					body: JSON.stringify(moto),
 				})
 					.then(resp => resp.json())
 					.then(data => setStore({ respuesta: data }))
 					.catch(error => console.log("Error loading message from backend", error))
+		},
+
+		loadMarca: () => {
+			fetch("https://3001-orosell666-enjoyandride-6dw8fl5jqe2.ws-eu38.gitpod.io/api/marca")
+				.then((res) => res.json())
+				.then((res) => setStore({ marca: res.results }))
+				.catch((error) => console.error(error));
 		},
 
 	}

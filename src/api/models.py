@@ -36,11 +36,10 @@ class Moto(db.Model):
     comment = db.Column(db.String(300), nullable=True)
     provincia = db.Column(db.String(300), nullable=False)
     ciudad = db.Column(db.String(300), nullable=False)
-    direccion = db.Column(db.String(300), nullable=False)
-    latitud = db.Column(db.Integer, primary_key=True)
-    longitud = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, primary_key=True)
-    comment = db.Column(db.String(7), nullable=True)
+    
+    latitud = db.Column(db.String, nullable=True)
+    longitud = db.Column(db.String, nullable=True)
+    matricula = db.Column(db.String, nullable=False)
 
     
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'),
@@ -90,3 +89,10 @@ class Marca(db.Model):
 
     def __repr__(self):
         return self.name
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            # do not serialize the password, its a security breach
+        }
