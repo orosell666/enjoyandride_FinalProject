@@ -7,7 +7,7 @@ export const Navbar = () => {
 
 			<div className="container justify-content-center">
 
-				<span className=" title fs-1 fw-bold">ENJOY&DRIVE</span>
+				<span className=" title fs-1 fw-bold">ENJOY&RIDE</span>
 				<div className="me-1 ">
 					<Link to="/login">
 						<button className="btn btn-light ">LOGIN</button>

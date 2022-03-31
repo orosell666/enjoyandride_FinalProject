@@ -13,48 +13,48 @@ export const RegisterMoto = () => {
     }
     return (
         <div className="container mt-5">
-            <div class="row">
-                <div class="col">
-                    <label for="formGroupExampleInput" class="form-label">Potencia</label>
-                    <input type="text" class="form-control" placeholder="500/100/250" aria-label="First name" name="email" onChange={(e) => changeData(e)} />
+            <div className="row">
+                <div className="col">
+                    <label for="formGroupExampleInput" className="form-label">Potencia</label>
+                    <input type="text" className="form-control" placeholder="500/100/250" aria-label="First name" name="email" onChange={(e) => changeData(e)} />
                 </div>
-                <div class="col mt-2">
-                    <label for="formGroupExampleInput" class="form-label">Precio por día</label>
-                    <input type="text" class="form-control" placeholder="" aria-label="Last name" name="password" onChange={(e) => changeData(e)} />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col mt-2">
-                    <label for="formGroupExampleInput" class="form-label">Precio por semana</label>
-                    <input type="text" class="form-control" placeholder="" aria-label="First name" name="name" onChange={(e) => changeData(e)} />
-                </div>
-                <div class="col mt-2">
-                    <label for="formGroupExampleInput" class="form-label">Descuento Fin de semana</label>
-                    <input type="text" class="form-control" placeholder="" aria-label="Last name" name="lastName" onChange={(e) => changeData(e)} />
+                <div className="col mt-2">
+                    <label for="formGroupExampleInput" className="form-label">Precio por día</label>
+                    <input type="text" className="form-control" placeholder="" aria-label="Last name" name="password" onChange={(e) => changeData(e)} />
                 </div>
             </div>
-            <div class="row">
-                <div class="col mt-2">
-                    <label for="formGroupExampleInput" class="form-label">Descuento por semana</label>
-                    <input type="text" class="form-control" placeholder="" aria-label="First name" name="phonenumber" onChange={(e) => changeData(e)} />
+            <div className="row">
+                <div className="col mt-2">
+                    <label for="formGroupExampleInput" className="form-label">Precio por semana</label>
+                    <input type="text" className="form-control" placeholder="" aria-label="First name" name="name" onChange={(e) => changeData(e)} />
                 </div>
-                <div class="col mt-2">
-                    <label for="formGroupExampleInput" class="form-label">Comentarios</label>
-                    <input type="text" class="form-control" placeholder="moto nueva, con accesorios, ..." aria-label="Last name" name="license" onChange={(e) => changeData(e)} />
+                <div className="col mt-2">
+                    <label for="formGroupExampleInput" className="form-label">Descuento Fin de semana</label>
+                    <input type="text" className="form-control" placeholder="" aria-label="Last name" name="lastName" onChange={(e) => changeData(e)} />
                 </div>
             </div>
-            <div class="row">
-                <div class="col mt-2">
-                    <label for="formGroupExampleInput" class="form-label">Provincia</label>
-                    <input type="text" class="form-control" placeholder="" aria-label="First name" name="birthdate" onChange={(e) => changeData(e)} />
+            <div className="row">
+                <div className="col mt-2">
+                    <label for="formGroupExampleInput" className="form-label">Descuento por semana</label>
+                    <input type="text" className="form-control" placeholder="" aria-label="First name" name="phonenumber" onChange={(e) => changeData(e)} />
                 </div>
-                <div class="col mt-2">
-                    <label for="formGroupExampleInput" class="form-label">Ciudad</label>
-                    <input type="text" class="form-control" placeholder="" aria-label="Last name" />
+                <div className="col mt-2">
+                    <label for="formGroupExampleInput" className="form-label">Comentarios</label>
+                    <input type="text" className="form-control" placeholder="moto nueva, con accesorios, ..." aria-label="Last name" name="license" onChange={(e) => changeData(e)} />
+                </div>
+            </div>
+            <div className="row">
+                <div className="col mt-2">
+                    <label for="formGroupExampleInput" className="form-label">Provincia</label>
+                    <input type="text" className="form-control" placeholder="" aria-label="First name" name="birthdate" onChange={(e) => changeData(e)} />
+                </div>
+                <div className="col mt-2">
+                    <label for="formGroupExampleInput" className="form-label">Ciudad</label>
+                    <input type="text" className="form-control" placeholder="" aria-label="Last name" />
                 </div>
             </div>
 
-            <button type="button" class="btn btn-primary" onClick={() => {
+            <button type="button" className="btn btn-primary" onClick={() => {
                 actions.generateMoto(moto)
 
             }}>Enviar</button>
