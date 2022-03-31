@@ -38,19 +38,19 @@ export const Login = () => {
                         placeholder="Password"
                     />
                 </div>
-                <Link to="/login">
-                    <button
-                        type="button"
-                        className="btn btn-dark mt-3 "
-                        //disabled={!validateForm()}
-                        onClick={() => {
-                            actions.generateToken(email, password)
 
-                        }}
-                    >
-                        Submit
-                    </button>
-                </Link>
+                <button
+                    type="button"
+                    className="btn btn-dark mt-3 "
+                    //disabled={!validateForm()}
+                    onClick={() => {
+                        actions.generateToken(email, password)
+
+                    }}
+                >
+                    Submit
+                </button>
+
 
                 {store.respuesta.message ? <div className={`alert alert-${store.respuesta.color}`} role="alert">
                     <h4 className="alert-heading">Well done!</h4>
