@@ -8,7 +8,7 @@ import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 import { Login } from "./pages/login";
 import { Register } from "./pages/registro";
-
+import { RegisterMoto } from "./pages/registroMoto";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
@@ -36,6 +36,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/registro">
 							<Register />
+						</Route>
+						<Route exact path="/registroMoto">
+							<RegisterMoto />
 						</Route>
 						<Route exact path="/single/:theid">
 							<Single />

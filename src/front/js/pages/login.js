@@ -19,9 +19,9 @@ export const Login = () => {
 
     function sideIn() { }
     return (
-        <div className="container">
-            <form>
-                <div>
+        <div className="container mt-5 ">
+            <form className="justify-content-center">
+                <div >
                     <input
                         autoFocus
                         type="email"
@@ -38,24 +38,24 @@ export const Login = () => {
                         placeholder="Password"
                     />
                 </div>
+                <Link to="/login">
+                    <button
+                        type="button"
+                        className="btn btn-dark mt-3 "
+                        //disabled={!validateForm()}
+                        onClick={() => {
+                            actions.generateToken(email, password)
 
-                <button
-                    type="button"
-                    className="btn btn-dark mt-3 "
-                    //disabled={!validateForm()}
-                    onClick={() => {
-                        actions.generateToken(email, password)
-
-                    }}
-                >
-                    Submit
-                </button>
+                        }}
+                    >
+                        Submit
+                    </button>
+                </Link>
 
                 {store.respuesta.message ? <div className={`alert alert-${store.respuesta.color}`} role="alert">
                     <h4 className="alert-heading">Well done!</h4>
                     <p>el email es: {store.respuesta.email}</p>
-                    <hr />
-                    <p className="mb-0">{store.respuesta.message}</p>
+
                 </div>
                     : ""}
 

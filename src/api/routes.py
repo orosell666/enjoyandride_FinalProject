@@ -66,6 +66,40 @@ def registro():
     }
     return jsonify(data_response), 200
 
+@api.route('/registroMoto', methods=['POST'])
+def registroMoto():
+    power = request.json.get('email')
+    priceday = request.json.get('priceday')
+    priceweek = request.json.get('priceweek')
+    discount_weekend = request.json.get('discount_weekend')
+    discount_week = request.json.get('discount_week')
+    comment = request.json.get('comment')
+    provincia = request.json.get('provincia')
+    ciudad = request.json.get('ciudad')
+    direccion = request.json.get('direccion')
+    latitud = request.json.get('latitud')
+    longitud = request.json.get('longitud')
+
+    moto = Moto(power= power, priceday= priceday, priceweek= priceweek, discount_weekend= discount_weekend, discount_week= discount_week, comment= comment, provincia= provincia, ciudad= ciudad, direccion= direccion, latitud= latitud, longitud= longitud)
+    db.session.add(moto)
+    db.session.commit()
+
+    data_response= {
+        "power": moto.power,
+        "priceday": moto.priceday,
+        "priceweek": moto.priceweek,
+        "discount_weekend": moto.discount_weekend,
+        "disocunt_week": moto.discount_week,
+        "comment": moto.comment,
+        "provincia": moto.provincia,
+        "ciudad": moto.ciudad,
+        "direccion": moto.direccion,
+        "latitud": moto.latitud,
+        "longitud": moto.longitud
+    }
+    return jsonify(data_response), 200
+
+
 
 
 @api.route('/hello', methods=['POST', 'GET'])
