@@ -70,6 +70,12 @@ class Modelo(db.Model):
     def __repr__(self):
         return  self.name
 
+    def serialize(self):
+        return {
+            "modelo_id": self.id,
+            "name": self.name,
+        }
+
 class Tipo(db.Model):
    
     id = db.Column(db.Integer, primary_key=True)
@@ -78,6 +84,12 @@ class Tipo(db.Model):
 
     def __repr__(self):
         return self.name
+        
+    def serialize(self):
+        return {
+            "modelo_id": self.id,
+            "name": self.name,
+        }
 
 class Marca(db.Model):
    

@@ -45,6 +45,8 @@ export const Login = () => {
                     //disabled={!validateForm()}
                     onClick={() => {
                         actions.generateToken(email, password)
+                        store.respuesta.token ? history.push('/dashboard') : ""
+
 
                     }}
                 >

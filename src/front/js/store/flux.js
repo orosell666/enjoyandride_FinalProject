@@ -2,6 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			respuesta: {},
+			datosUsuario: {},
 
 		},
 
@@ -31,7 +32,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: JSON.stringify(user),
 				})
 					.then(resp => resp.json())
-					.then(data => setStore({ respuesta: data }))
+					.then(data => setStore({ datosUsuario: data }))
 					.catch(error => console.log("Error loading message from backend", error));
 			},
 
@@ -52,7 +53,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 				.then((res) => setStore({ marca: res.results }))
 				.catch((error) => console.error(error));
 		},
-
+		loadModelo: () => {
+			fetch("https://3001-orosell666-enjoyandride-6dw8fl5jqe2.ws-eu38.gitpod.io/api/modelo")
+				.then((res) => res.json())
+				.then((res) => setStore({ modelo: res.results }))
+				.catch((error) => console.error(error));
+		},
+		loadTipo: () => {
+			fetch("https://3001-orosell666-enjoyandride-6dw8fl5jqe2.ws-eu38.gitpod.io/api/tipo")
+				.then((res) => res.json())
+				.then((res) => setStore({ tipo: res.results }))
+				.catch((error) => console.error(error));
+		},
 	}
 
 }

@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Moto
+from api.models import db, User, Moto, Marca, Modelo, Tipo
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
@@ -127,6 +127,52 @@ def getMarca():
         listadoMarcas.append(marca.serialize()) 
 
     return jsonify(listadoMarcas), 200
+
+@api.route('/modelo', methods=['POST'])
+def loadModelo():
+    name = request.json.get('name')
+
+    modelos = Modelo(name= name)
+    db.session.add(modelo)
+    db.session.commit()
+
+    data_response= {
+        "name": modelo.name
+    }
+    return jsonify(data_response), 200
+
+@api.route('/modelo', methods=['GET'])
+def getModelo():
+    
+    modelos = Modelo.query.all()
+    listadoModelos = []
+    for modelo in modelos:
+        listadoModelos.append(modelo.serialize()) 
+
+    return jsonify(listadoModelos), 200
+
+@api.route('/tipo', methods=['POST'])
+def loadTipos():
+    name = request.json.get('name')
+
+    tipos = Tipo(name= name)
+    db.session.add(tipo)
+    db.session.commit()
+
+    data_response= {
+        "name": tipo.name
+    }
+    return jsonify(data_response), 200
+
+@api.route('/tipo', methods=['GET'])
+def getTipo():
+    
+    tipos = Tipo.query.all()
+    listadoTipos = []
+    for tipo in tipos:
+        listadoTipos.append(tipo.serialize()) 
+
+    return jsonify(listadoTipos), 200
 
 @api.route('/hello', methods=['POST', 'GET'])
 def handle_hello():
