@@ -68,7 +68,11 @@ def registro():
     return jsonify(data_response), 200
 
 @api.route('/registroMoto', methods=['POST'])
+@jwt_required()
 def registroMoto():
+
+    user_id = get_jwt_identity()    
+
     power = request.json.get('power')
     priceday = request.json.get('priceday')
     priceweek = request.json.get('priceweek')
@@ -85,7 +89,7 @@ def registroMoto():
     tipo_id = request.json.get('tipo_id')
 
     moto = Moto(power= power, priceday= priceday, priceweek= priceweek, discount_weekend= discount_weekend, discount_week= discount_week, comment= comment, provincia= provincia, 
-    ciudad= ciudad, latitud= latitud, longitud= longitud,  modelo_id= modelo_id, tipo_id= tipo_id, user_id= 1)
+    ciudad= ciudad, latitud= latitud, longitud= longitud,  modelo_id= modelo_id, tipo_id= tipo_id, user_id= user_id, matricula= matricula)
     db.session.add(moto)
     db.session.commit()
 
@@ -98,7 +102,6 @@ def registroMoto():
         "comment": moto.comment,
         "provincia": moto.provincia,
         "ciudad": moto.ciudad,
-        "direccion": moto.direccion,
         "latitud": moto.latitud,
         "longitud": moto.longitud
     }

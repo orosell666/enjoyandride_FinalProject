@@ -35,7 +35,13 @@ export const RegisterMoto = () => {
                 <div className="row">
                     <div className="col">
                         <label for="formGroupExampleInput" className="form-label">Potencia</label>
-                        <input type="text" className="form-control" placeholder="500/100/250" aria-label="First name" name="power" onChange={(e) => changeData(e)} />
+                        <select className="form-select" aria-label="Default select example" name="power" onChange={(e) => changeData(e)}>
+                            <option selected >Selecciona Potencia</option>
+                            <option value="1">500 o más</option>
+                            <option value="2">250</option>
+                            <option value="3">125</option>
+
+                        </select>
                     </div>
                     <div className="col mt-2">
                         <label for="formGroupExampleInput" className="form-label">Precio por día</label>

@@ -6,8 +6,9 @@ export const Navbar = () => {
 		<nav className="navbar ">
 
 			<div className="container justify-content-center">
-
-				<span className=" title fs-1 fw-bold">ENJOY&RIDE</span>
+				<Link to="/">
+					<span className=" title fs-1 fw-bold">ENJOY&RIDE</span>
+				</Link>
 				<div className="me-1 ">
 					<Link to="/login">
 						<button className="btn btn-light ">LOGIN</button>

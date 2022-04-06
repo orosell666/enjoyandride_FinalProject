@@ -3,6 +3,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			respuesta: {},
 			datosUsuario: {},
+			datosMoto: {},
 
 		},
 
@@ -36,15 +37,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.log("Error loading message from backend", error));
 			},
 
-			generateMoto: (moto) =>
+			generateMoto: (moto) => {
+				const token = getStore().respuesta.token
 				fetch("https://3001-orosell666-enjoyandride-6dw8fl5jqe2.ws-eu38.gitpod.io/api/registroMoto", {
 					method: "POST",
-					headers: { "Content-Type": "application/json" },
+					headers: {
+						"Authorization": "Bearer " + token, // ⬅⬅⬅ authorization header
+						"Content-Type": "application/json"
+					},
 					body: JSON.stringify(moto),
 				})
 					.then(resp => resp.json())
-					.then(data => setStore({ respuesta: data }))
+					.then(data => setStore({ datosMoto: data }))
 					.catch(error => console.log("Error loading message from backend", error))
+			}
 		},
 
 		loadMarca: () => {
