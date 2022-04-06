@@ -3,14 +3,20 @@ import { Link } from "react-router-dom";
 
 export const Navbar = () => {
 	return (
-		<nav className="navbar navbar-light bg-light">
-			<div className="container">
+		<nav className="navbar ">
+
+			<div className="container justify-content-center">
 				<Link to="/">
-					<span className="navbar-brand mb-0 h1">React Boilerplate</span>
+					<span className=" title fs-1 fw-bold">ENJOY&RIDE</span>
 				</Link>
-				<div className="ml-auto">
-					<Link to="/demo">
-						<button className="btn btn-primary">Check the Context in action</button>
+				<div className="me-1 ">
+					<Link to="/login">
+						<button className="btn btn-light ">LOGIN</button>
+					</Link>
+				</div>
+				<div className="ms-1">
+					<Link to="/registro">
+						<button className="btn btn-warning">REGISTRO</button>
 					</Link>
 				</div>
 			</div>

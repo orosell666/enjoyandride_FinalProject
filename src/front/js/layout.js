@@ -7,10 +7,12 @@ import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 import { Login } from "./pages/login";
-
-
+import { Register } from "./pages/registro";
+import { RegisterMoto } from "./pages/registroMoto";
+import { Dashboard } from "./pages/dashboard";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+
 
 //create your first component
 const Layout = () => {
@@ -32,6 +34,15 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/login">
 							<Login />
+						</Route>
+						<Route exact path="/registro">
+							<Register />
+						</Route>
+						<Route exact path="/dashboard">
+							<Dashboard />
+						</Route>
+						<Route exact path="/registroMoto">
+							<RegisterMoto />
 						</Route>
 						<Route exact path="/single/:theid">
 							<Single />
