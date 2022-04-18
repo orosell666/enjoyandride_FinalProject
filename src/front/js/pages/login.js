@@ -54,12 +54,6 @@ export const Login = () => {
                 </button>
 
 
-                {store.respuesta.message ? <div className={`alert alert-${store.respuesta.color}`} role="alert">
-                    <h4 className="alert-heading">Well done!</h4>
-                    <p>el email es: {store.respuesta.email}</p>
-
-                </div>
-                    : ""}
 
 
             </form>
