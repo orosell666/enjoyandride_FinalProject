@@ -32,7 +32,13 @@ def login():
         "email": user.email,
         "userID": user.id,
         "message": "conseguido!",
-        "color": "success"
+        "color": "success",
+        "telefono": user.phonenumber,
+        "nombre": user.name,
+        "apellidos": user.lastName,
+        "direccion": user.adress,
+        "birthdate": user.birthdate,
+        "license": user.license
     }
     return jsonify(data_response), 200
 

@@ -12,14 +12,11 @@ export const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     let history = useHistory();
-    function validateForm() {
-        return email.length > 0 && password.length > 0;
-    }
 
-
-    function sideIn() { }
     return (
         <div className="container mt-5 ">
+
+            {store.respuesta.token ? history.push('/dashboard') : ""}
             <form className="justify-content-center">
                 <div >
                     <input
@@ -45,7 +42,7 @@ export const Login = () => {
                     //disabled={!validateForm()}
                     onClick={() => {
                         actions.generateToken(email, password)
-                        store.respuesta.token ? history.push('/dashboard') : ""
+
 
 
                     }}
