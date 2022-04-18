@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import { Component1 } from "../component/component1";
+
 import "../../styles/home.css";
 
 export const Home = () => {
@@ -9,7 +10,7 @@ export const Home = () => {
 	return (
 		<div className="container">
 			<Component1 />
-
 		</div>
+
 	);
 };

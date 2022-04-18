@@ -19,9 +19,10 @@ export const Navbar = () => {
 						:
 
 
-						<div><Link to="/login">
-							<button className="btn btn-light ">LOGIN</button>
-						</Link>
+						<div className="d-flex justify-content-end">
+							<Link to="/login">
+								<button className="btn btn-light ">LOGIN</button>
+							</Link>
 							<div className="ms-1">
 								<Link to="/registro">
 									<button className="btn btn-warning">REGISTRO</button>
