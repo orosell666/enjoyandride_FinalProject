@@ -3,8 +3,7 @@ import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-
-export const UploadView = props => {
+export const UploadView = () => {
 	const { store, actions } = useContext(Context);
 	const [files, setFiles] = useState(null);
 
@@ -37,6 +36,3 @@ export const UploadView = props => {
 	);
 };
 
-UploadView.propTypes = {
-	match: PropTypes.object
-};

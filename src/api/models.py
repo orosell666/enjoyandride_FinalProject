@@ -36,7 +36,7 @@ class Moto(db.Model):
     comment = db.Column(db.String(300), nullable=True)
     provincia = db.Column(db.String(300), nullable=False)
     ciudad = db.Column(db.String(300), nullable=False)
-    
+   # image_url = db.Column(db.String(300), nullable=True)
     latitud = db.Column(db.String, nullable=True)
     longitud = db.Column(db.String, nullable=True)
     matricula = db.Column(db.String, nullable=False)

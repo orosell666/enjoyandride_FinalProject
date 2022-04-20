@@ -2,11 +2,13 @@ import React, { useState, useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { Redirect } from "react-router-dom";
-import { Upload } from "../component/uploadimages";
+import { UploadView } from "./upload";
+
 
 export const RegisterMoto = () => {
     const { actions, store } = useContext(Context);
     const [moto, setMoto] = useState({})
+
     let history = useHistory();
 
 
@@ -105,15 +107,14 @@ export const RegisterMoto = () => {
                             <input type="text" className="form-control" placeholder="" aria-label="Last name" name="matricula" onChange={(e) => changeData(e)} />
                         </div>
                     </div>
-
-
-                    <input type="file" onChange={(e) => setFiles(e.target.files)} />
+                    <div>
+                        <UploadView />
+                    </div>
 
 
 
                     <button type="button" className="btn btn-primary mt-5" onClick={() => {
                         actions.generateMoto(moto)
-
 
                     }}>Enviar</button>
 

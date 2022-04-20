@@ -44,9 +44,7 @@ const Layout = () => {
 						<Route exact path="/registroMoto">
 							<RegisterMoto />
 						</Route>
-						<Route exact path="/upload">
-							<UploadView />
-						</Route>
+
 						<Route>
 							<h1>Not found!</h1>
 						</Route>

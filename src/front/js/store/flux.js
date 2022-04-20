@@ -83,6 +83,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ respuesta: { token: null } })
 			},
 
+			uploadImage: (evt) => {
+				evt.preventDefault();
+				console.log("This are the files", files);
+				let body = new FormData();
+				body.append("image", files[0])
+				const options = {
+					body,
+					method: "POST",
+				}
+
+				fetch("https://3001-orosell666-enjoyandride-qvip2xpx6vq.ws-eu34.gitpod.io/api/upload", options)
+					.then(resp => resp.json())
+					.then(data => console.log("Success", data))
+					.catch(errors => console.log("ERRORRR", error));
+
+			}
+
 
 		}
 

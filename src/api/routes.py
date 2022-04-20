@@ -197,6 +197,12 @@ def handle_hello():
 @api.route('/upload', methods=['POST'])
 def handle_upload():
 
-    cloudinary.uploader.upload(request.files ['image'])
+    #moto1 = Moto.query.get(1)
+    result = cloudinary.uploader.upload(request.files ['image'])
+    print(result['secure_url'])
+
+    #moto.image_url = result['secure_url']
+
+    #db.session.commit()
 
     return jsonify("all good"), 200
