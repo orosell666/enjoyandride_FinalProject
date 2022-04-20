@@ -107,12 +107,13 @@ export const RegisterMoto = () => {
                     </div>
 
 
-
+                    <input type="file" onChange={(e) => setFiles(e.target.files)} />
 
 
 
                     <button type="button" className="btn btn-primary mt-5" onClick={() => {
                         actions.generateMoto(moto)
+
 
                     }}>Enviar</button>
 
