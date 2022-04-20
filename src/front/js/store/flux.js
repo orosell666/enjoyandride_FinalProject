@@ -1,3 +1,5 @@
+
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -19,7 +21,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 				//fetch(process.env.BACKEND_URL + "/token", {
-				fetch("https://3001-orosell666-enjoyandride-qvip2xpx6vq.ws-eu40.gitpod.io/api/token", {
+				fetch("https://3001-orosell666-enjoyandride-qvip2xpx6vq.ws-eu34.gitpod.io/api/token", {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify({ email: email, password: password }),
@@ -32,7 +34,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			generateRegister: (user) => {
-				fetch("https://3001-orosell666-enjoyandride-qvip2xpx6vq.ws-eu40.gitpod.io/api/registroUsuarios", {
+				fetch("https://3001-orosell666-enjoyandride-qvip2xpx6vq.ws-eu34.gitpod.io/api/registroUsuarios", {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify(user),
@@ -44,7 +46,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			generateMoto: (moto) => {
 				const token = getStore().respuesta.token
-				fetch("https://3001-orosell666-enjoyandride-qvip2xpx6vq.ws-eu40.gitpod.io/api/registroMoto", {
+				fetch("https://3001-orosell666-enjoyandride-qvip2xpx6vq.ws-eu34.gitpod.io/api/registroMoto", {
 					method: "POST",
 					headers: {
 						"Authorization": "Bearer " + token, // ⬅⬅⬅ authorization header
@@ -59,19 +61,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			loadMarca: () => {
-				fetch("https://3001-orosell666-enjoyandride-qvip2xpx6vq.ws-eu40.gitpod.io/api/marca")
+				fetch("https://3001-orosell666-enjoyandride-qvip2xpx6vq.ws-eu34.gitpod.io/api/marca")
 					.then((res) => res.json())
 					.then((res) => setStore({ marca: res.results }))
 					.catch((error) => console.error(error));
 			},
 			loadModelo: () => {
-				fetch("https://3001-orosell666-enjoyandride-qvip2xpx6vq.ws-eu40.gitpod.io/api/modelo")
+				fetch("https://3001-orosell666-enjoyandride-qvip2xpx6vq.ws-eu34.gitpod.io/api/modelo")
 					.then((res) => res.json())
 					.then((res) => setStore({ modelo: res.results }))
 					.catch((error) => console.error(error));
 			},
 			loadTipo: () => {
-				fetch("https://3001-orosell666-enjoyandride-qvip2xpx6vq.ws-eu40.gitpod.io/api/tipo")
+				fetch("https://3001-orosell666-enjoyandride-qvip2xpx6vq.ws-eu34.gitpod.io/api/tipo")
 					.then((res) => res.json())
 					.then((res) => setStore({ tipo: res.results }))
 					.catch((error) => console.error(error));
@@ -79,7 +81,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			logout: () => {
 				setStore({ respuesta: { token: null } })
-			}
+			},
+
+
 		}
 
 	}

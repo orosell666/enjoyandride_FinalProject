@@ -7,6 +7,8 @@ from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from datetime import datetime
+import cloudinary
+import cloudinary.uploader
 
 
 api = Blueprint('api', __name__)
@@ -191,3 +193,10 @@ def handle_hello():
     }
 
     return jsonify(response_body), 200
+
+@api.route('/upload', methods=['POST'])
+def handle_upload():
+
+    cloudinary.uploader.upload(request.files ['image'])
+
+    return jsonify("all good"), 200

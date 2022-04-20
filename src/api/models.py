@@ -10,8 +10,8 @@ class User(db.Model):
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
     name = db.Column(db.String(80), nullable=False)
     lastName = db.Column(db.String(120), nullable=False)
-    phonenumber = db.Column(db.String(120), unique=True, nullable=False)
-    license = db.Column(db.String(120), unique=True, nullable=False)
+    phonenumber = db.Column(db.String(120), unique=False, nullable=False)
+    license = db.Column(db.String(120), unique=False, nullable=False)
     adress = db.Column(db.String(120), nullable=False)
     birthdate = db.Column(db.DateTime, nullable=False)
 
