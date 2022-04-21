@@ -2,13 +2,20 @@ import React, { useState, useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { Redirect } from "react-router-dom";
-import { UploadView } from "./upload";
 
 
 export const RegisterMoto = () => {
     const { actions, store } = useContext(Context);
     const [moto, setMoto] = useState({})
+    const [files, setFiles] = useState(null);
 
+    const Register = () => {
+        const formData = new FormData()
+
+        formData.append("moto", moto);
+        formData.append("files", files)
+        actions.generateMoto(formData)
+    }
     let history = useHistory();
 
 
@@ -107,14 +114,19 @@ export const RegisterMoto = () => {
                             <input type="text" className="form-control" placeholder="" aria-label="Last name" name="matricula" onChange={(e) => changeData(e)} />
                         </div>
                     </div>
-                    <div>
-                        <UploadView />
+                    <div className="jumbotron">
+
+                        <form >
+                            <input type="file" onChange={(e) => setFiles(e.target.files)} />
+                            <button>Upload</button>
+                        </form>
                     </div>
 
 
 
                     <button type="button" className="btn btn-primary mt-5" onClick={() => {
-                        actions.generateMoto(moto)
+                        Register()
+
 
                     }}>Enviar</button>
 

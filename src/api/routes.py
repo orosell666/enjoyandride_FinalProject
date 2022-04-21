@@ -89,7 +89,8 @@ def registroMoto():
     comment = request.json.get('comment')
     provincia = request.json.get('provincia')
     ciudad = request.json.get('ciudad')
-    
+    result = cloudinary.uploader.upload(request.files ['image'])
+    image_url = result['secure_url']
     latitud = request.json.get('latitud')
     longitud = request.json.get('longitud')
     matricula = request.json.get('matricula')
@@ -97,7 +98,7 @@ def registroMoto():
     tipo_id = request.json.get('tipo_id')
 
     moto = Moto(power= power, priceday= priceday, priceweek= priceweek, discount_weekend= discount_weekend, discount_week= discount_week, comment= comment, provincia= provincia, 
-    ciudad= ciudad, latitud= latitud, longitud= longitud,  modelo_id= modelo_id, tipo_id= tipo_id, user_id= user_id, matricula= matricula)
+    ciudad= ciudad, latitud= latitud, longitud= longitud,  modelo_id= modelo_id, tipo_id= tipo_id, user_id= user_id, matricula= matricula, image_url= image_url)
     db.session.add(moto)
     db.session.commit()
 
@@ -111,7 +112,8 @@ def registroMoto():
         "provincia": moto.provincia,
         "ciudad": moto.ciudad,
         "latitud": moto.latitud,
-        "longitud": moto.longitud
+        "longitud": moto.longitud,
+        "imagen": moto.image_url,
     }
     return jsonify(data_response), 200
 
@@ -197,12 +199,12 @@ def handle_hello():
 @api.route('/upload', methods=['POST'])
 def handle_upload():
 
-    #moto1 = Moto.query.get(1)
+    moto1 = Moto.query.get(1)
     result = cloudinary.uploader.upload(request.files ['image'])
     print(result['secure_url'])
 
-    #moto.image_url = result['secure_url']
+    moto.image_url = result['secure_url']
 
-    #db.session.commit()
+    db.session.commit()
 
     return jsonify("all good"), 200

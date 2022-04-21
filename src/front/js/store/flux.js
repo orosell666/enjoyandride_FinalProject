@@ -44,7 +44,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.log("Error loading message from backend", error));
 			},
 
-			generateMoto: (moto) => {
+			generateMoto: (formData) => {
 				const token = getStore().respuesta.token
 				fetch("https://3001-orosell666-enjoyandride-qvip2xpx6vq.ws-eu34.gitpod.io/api/registroMoto", {
 					method: "POST",
@@ -52,7 +52,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"Authorization": "Bearer " + token, // ⬅⬅⬅ authorization header
 						"Content-Type": "application/json"
 					},
-					body: JSON.stringify(moto),
+					body: formData,
 				})
 					.then(resp => resp.json())
 					.then(data => setStore({ datosMoto: data }))
