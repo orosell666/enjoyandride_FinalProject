@@ -27,26 +27,23 @@ export const RegisterMoto = () => {
     return (
         <div className="container mt-5">
             {store.respuesta.token ?
+
                 <div className="row">
                     <div className="col mt-2">
-                        <label htmlFor="formGroupExampleInput" className="form-label">Marca</label>
-                        <select className="form-select" aria-label="Default select example" name="marca_id" onChange={(e) => changeData(e)}>
-                            <option selected >Selecciona Marca</option>
-                            <option value="1">HOnda</option>
+                        <label for="exampleDataList" className="form-label">Marca *</label>
+                        <input className="form-control" aria-label="Default select example" name="marca_id" onChange={(e) => changeData(e)}>
 
-                        </select>
+
+                        </input>
                     </div>
                     <div className="col mt-2">
-                        <label htmlFor="formGroupExampleInput" className="form-label">Modelo</label>
-                        <select className="form-select" aria-label="Default select example" name="modelo_id" onChange={(e) => changeData(e)}>
-                            <option selected >Selecciona Modelo</option>
-                            <option value="1">HOnda</option>
-
-                        </select>
+                        <label htmlFor="formGroupExampleInput" className="form-label">Modelo *</label>
+                        <input className="form-control" aria-label="Default select example" name="modelo_id" onChange={(e) => changeData(e)}>
+                        </input>
                     </div>
                     <div className="row">
                         <div className="col">
-                            <label htmlFor="formGroupExampleInput" className="form-label">Potencia</label>
+                            <label htmlFor="formGroupExampleInput" className="form-label">Potencia *</label>
                             <select className="form-select" aria-label="Default select example" name="power" onChange={(e) => changeData(e)}>
                                 <option selected >Selecciona Potencia</option>
                                 <option value="1">500 o más</option>
@@ -56,13 +53,13 @@ export const RegisterMoto = () => {
                             </select>
                         </div>
                         <div className="col mt-2">
-                            <label htmlFor="formGroupExampleInput" className="form-label">Precio por día</label>
+                            <label htmlFor="formGroupExampleInput" className="form-label">Precio por día *</label>
                             <input type="text" className="form-control" placeholder="" aria-label="Last name" name="priceday" onChange={(e) => changeData(e)} />
                         </div>
                     </div>
                     <div className="row">
                         <div className="col mt-2">
-                            <label htmlFor="formGroupExampleInput" className="form-label">Precio por semana</label>
+                            <label htmlFor="formGroupExampleInput" className="form-label">Precio por semana *</label>
                             <input type="text" className="form-control" placeholder="" aria-label="First name" name="priceweek" onChange={(e) => changeData(e)} />
                         </div>
                         <div className="col mt-2">
@@ -82,11 +79,11 @@ export const RegisterMoto = () => {
                     </div>
                     <div className="row">
                         <div className="col mt-2">
-                            <label htmlFor="formGroupExampleInput" className="form-label">Provincia</label>
+                            <label htmlFor="formGroupExampleInput" className="form-label">Provincia *</label>
                             <input type="text" className="form-control" placeholder="" aria-label="First name" name="provincia" onChange={(e) => changeData(e)} />
                         </div>
                         <div className="col mt-2">
-                            <label htmlFor="formGroupExampleInput" className="form-label">Ciudad</label>
+                            <label htmlFor="formGroupExampleInput" className="form-label">Ciudad *</label>
                             <input type="text" className="form-control" placeholder="" aria-label="Last name" name="ciudad" onChange={(e) => changeData(e)} />
                         </div>
                     </div>
@@ -102,25 +99,31 @@ export const RegisterMoto = () => {
                     </div>
                     <div className="row">
                         <div className="col mt-2">
-                            <label htmlFor="formGroupExampleInput" className="form-label">Tipo</label>
+                            <label htmlFor="formGroupExampleInput" className="form-label">Tipo *</label>
                             <select className="form-select" aria-label="Default select example" name="tipo_id" onChange={(e) => changeData(e)}>
                                 <option selected >Selecciona Tipo</option>
-                                <option value="1">HOnda</option>
+                                <option value="1">Naked</option>
+                                <option value="2">Trail</option>
+                                <option value="3">Custom</option>
+                                <option value="4">R-style</option>
+                                <option value="5">Scooter</option>
 
                             </select>
                         </div>
                         <div className="col mt-2">
-                            <label htmlFor="formGroupExampleInput" className="form-label">matricula</label>
+                            <label htmlFor="formGroupExampleInput" className="form-label">Matricula *</label>
                             <input type="text" className="form-control" placeholder="" aria-label="Last name" name="matricula" onChange={(e) => changeData(e)} />
                         </div>
                     </div>
-                    <div className="jumbotron">
 
-                        <form >
-                            <input type="file" onChange={(e) => setFiles(e.target.files)} />
-                            <button>Upload</button>
-                        </form>
+
+
+                    <div className=" col mb-3 mt-2">
+                        <label htmlFor="formGroupExampleInput" className="form-label">Imágenes *</label>
+                        <input type="file" class="form-control" id="inputGroupFile02" onChange={(e) => setFiles(e.target.files)} />
+
                     </div>
+
 
 
 

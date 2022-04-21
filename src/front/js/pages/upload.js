@@ -7,6 +7,7 @@ export const UploadView = () => {
 	const { store, actions } = useContext(Context);
 	const [files, setFiles] = useState(null);
 
+
 	const uploadImage = (evt) => {
 		evt.preventDefault();
 		console.log("This are the files", files);
