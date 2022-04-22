@@ -6,12 +6,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 			respuesta: {},
 			datosUsuario: {},
 			datosMoto: {},
+			motos: [],
+
 
 		},
 
 
 		actions: {
 
+			//ESTA FUNCIÓN ME RECUPERA LA INFO DE TODAS LAS MOTOS EN EL COMPONENTE MotoCard
+			cargarMotos: async () => {
+
+				await fetch(process.env.BACKEND_URL + "/api/recuperaMotos")
+					.then(resp => resp.json())
+
+					.then(data => setStore({ motos: data }))
+				// .catch(error => console.log("Error al recuperar las motos", error));
+
+			},
 
 			generateToken: (email, password) => {
 				// fetching data from the backend
@@ -20,8 +32,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 
-				//fetch(process.env.BACKEND_URL + "/token", {
-				fetch("https://3001-orosell666-enjoyandride-qvip2xpx6vq.ws-eu34.gitpod.io/api/token", {
+				//fetch(process.env.BACKEND_URL + "/token"/token", {
+				fetch(process.env.BACKEND_URL + "/api/token", {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify({ email: email, password: password }),
@@ -34,7 +46,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			generateRegister: (user) => {
-				fetch("https://3001-orosell666-enjoyandride-qvip2xpx6vq.ws-eu34.gitpod.io/api/registroUsuarios", {
+				fetch(process.env.BACKEND_URL + "/api/registroUsuarios", {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify(user),
@@ -44,15 +56,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.log("Error loading message from backend", error));
 			},
 
-			generateMoto: (formData) => {
+			generateMoto: (moto) => {
 				const token = getStore().respuesta.token
-				fetch("https://3001-orosell666-enjoyandride-qvip2xpx6vq.ws-eu34.gitpod.io/api/registroMoto", {
+
+				console.log(moto)
+
+				fetch(process.env.BACKEND_URL + "/api/registroMoto", {
 					method: "POST",
 					headers: {
 						"Authorization": "Bearer " + token, // ⬅⬅⬅ authorization header
-						"Content-Type": "application/json"
+
 					},
-					body: formData,
+					body: moto
 				})
 					.then(resp => resp.json())
 					.then(data => setStore({ datosMoto: data }))
@@ -60,20 +75,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			},
 
+
 			loadMarca: () => {
-				fetch("https://3001-orosell666-enjoyandride-qvip2xpx6vq.ws-eu34.gitpod.io/api/marca")
+				fetch(process.env.BACKEND_URL + "/api/marca")
 					.then((res) => res.json())
 					.then((res) => setStore({ marca: res.results }))
 					.catch((error) => console.error(error));
 			},
 			loadModelo: () => {
-				fetch("https://3001-orosell666-enjoyandride-qvip2xpx6vq.ws-eu34.gitpod.io/api/modelo")
+				fetch(process.env.BACKEND_URL + "/api/modelo")
 					.then((res) => res.json())
 					.then((res) => setStore({ modelo: res.results }))
 					.catch((error) => console.error(error));
 			},
 			loadTipo: () => {
-				fetch("https://3001-orosell666-enjoyandride-qvip2xpx6vq.ws-eu34.gitpod.io/api/tipo")
+				fetch(process.env.BACKEND_URL + "/api/tipo")
 					.then((res) => res.json())
 					.then((res) => setStore({ tipo: res.results }))
 					.catch((error) => console.error(error));
@@ -93,7 +109,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					method: "POST",
 				}
 
-				fetch("https://3001-orosell666-enjoyandride-qvip2xpx6vq.ws-eu34.gitpod.io/api/upload", options)
+				fetch(process.env.BACKEND_URL + "/api/upload", options)
 					.then(resp => resp.json())
 					.then(data => console.log("Success", data))
 					.catch(errors => console.log("ERRORRR", error));

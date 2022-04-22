@@ -9,6 +9,8 @@ from flask_jwt_extended import JWTManager, create_access_token, jwt_required, ge
 from datetime import datetime
 import cloudinary
 import cloudinary.uploader
+import json
+
 
 
 api = Blueprint('api', __name__)
@@ -80,22 +82,22 @@ def registro():
 def registroMoto():
 
     user_id = get_jwt_identity()    
-
-    power = request.json.get('power')
-    priceday = request.json.get('priceday')
-    priceweek = request.json.get('priceweek')
-    discount_weekend = request.json.get('discount_weekend')
-    discount_week = request.json.get('discount_week')
-    comment = request.json.get('comment')
-    provincia = request.json.get('provincia')
-    ciudad = request.json.get('ciudad')
-    result = cloudinary.uploader.upload(request.files ['image'])
+  
+    power = request.form.get('power')
+    priceday = request.form.get('priceday')
+    priceweek = request.form.get('priceweek')
+    discount_weekend = request.form.get('discount_weekend')
+    discount_week = request.form.get('discount_week')
+    comment = request.form.get('comment')
+    provincia = request.form.get('provincia')
+    ciudad = request.form.get('ciudad')
+    result = cloudinary.uploader.upload(request.files['image'])
     image_url = result['secure_url']
-    latitud = request.json.get('latitud')
-    longitud = request.json.get('longitud')
-    matricula = request.json.get('matricula')
-    modelo_id = request.json.get('modelo_id')
-    tipo_id = request.json.get('tipo_id')
+    latitud = request.form.get('latitud')
+    longitud = request.form.get('longitud')
+    matricula = request.form.get('matricula')
+    modelo_id = request.form.get('modelo_id')
+    tipo_id = request.form.get('tipo_id')
 
     moto = Moto(power= power, priceday= priceday, priceweek= priceweek, discount_weekend= discount_weekend, discount_week= discount_week, comment= comment, provincia= provincia, 
     ciudad= ciudad, latitud= latitud, longitud= longitud,  modelo_id= modelo_id, tipo_id= tipo_id, user_id= user_id, matricula= matricula, image_url= image_url)
@@ -208,3 +210,14 @@ def handle_upload():
     db.session.commit()
 
     return jsonify("all good"), 200
+
+
+#ESTE ENDPOINT ME DEVUELVE TODAS LAS MOTOS EN EL COMPONENTE MotoCArd
+@api.route('/recuperaMotos', methods=['GET'])
+def recuperaMotos():
+    
+    motos = Moto.query.all()
+     
+    all_motos = list(map(lambda x: x.serialize(), motos))
+
+    return jsonify(all_motos), 200

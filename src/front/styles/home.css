@@ -18,3 +18,9 @@ h3 {
 .navbar {
   background-color: #575fcc;
 }
+
+.homeimage {
+  background: url("https://res.cloudinary.com/orosell666/image/upload/v1650639584/harley-davidson-rEPAjhzt7TY-unsplash_pgfixd.jpg")
+    no-repeat;
+  background-size: 700px 467px;
+}

@@ -59,6 +59,22 @@ class Moto(db.Model):
     def __repr__(self):
         return '<Moto %r>' % self.id
 
+    def serialize(self):
+        return {
+            "modelo_id": self.id,
+            "id" : self.id,
+            "power":  self.power,
+            "image_url" : self.image_url,
+            "provincia" : self.provincia,
+            "ciudad" : self.ciudad,
+
+        }    
+
+
+
+
+
+
 
 class Modelo(db.Model):
     

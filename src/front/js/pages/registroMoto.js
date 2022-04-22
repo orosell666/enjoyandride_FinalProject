@@ -11,9 +11,9 @@ export const RegisterMoto = () => {
 
     const Register = () => {
         const formData = new FormData()
-
+        console.log("hello")
         formData.append("moto", moto);
-        formData.append("files", files)
+        formData.append("file", files)
         actions.generateMoto(formData)
     }
     let history = useHistory();
@@ -30,7 +30,7 @@ export const RegisterMoto = () => {
 
                 <div className="row">
                     <div className="col mt-2">
-                        <label for="exampleDataList" className="form-label">Marca *</label>
+                        <label htmlFor="exampleDataList" className="form-label">Marca *</label>
                         <input className="form-control" aria-label="Default select example" name="marca_id" onChange={(e) => changeData(e)}>
 
 
@@ -120,7 +120,7 @@ export const RegisterMoto = () => {
 
                     <div className=" col mb-3 mt-2">
                         <label htmlFor="formGroupExampleInput" className="form-label">Imágenes *</label>
-                        <input type="file" class="form-control" id="inputGroupFile02" onChange={(e) => setFiles(e.target.files)} />
+                        <input type="file" className="form-control" id="inputGroupFile02" onChange={(e) => setFiles(e.target.files)} />
 
                     </div>
 
