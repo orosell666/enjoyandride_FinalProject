@@ -11,7 +11,8 @@
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
-h3 {
+h3,
+h1 {
   font-family: Arial, Helvetica, sans-serif;
   color: #575fcc;
 }
@@ -23,4 +24,7 @@ h3 {
   background: url("https://res.cloudinary.com/orosell666/image/upload/v1650639584/harley-davidson-rEPAjhzt7TY-unsplash_pgfixd.jpg")
     no-repeat;
   background-size: 700px 467px;
+}
+.text {
+  color: #575fcc;
 }

@@ -14,11 +14,12 @@ export const Login = () => {
     let history = useHistory();
 
     return (
-        <div className="container mt-5 ">
+        <div className="container mt-5 mx-auto ">
 
             {store.respuesta.token ? history.push('/dashboard') : ""}
-            <form className="justify-content-center">
+            <form >
                 <div >
+                    <label for="exampleFormControlInput1" className="form-label text-muted">Email</label><br />
                     <input
                         autoFocus
                         type="email"
@@ -27,7 +28,8 @@ export const Login = () => {
                         placeholder="Email"
                     />
                 </div>
-                <div className="form-group">
+                <div className="form-group mt-2">
+                    <label for="exampleFormControlInput1" className="form-label text-muted">Contraseña</label><br />
                     <input
                         type="password"
                         value={password}

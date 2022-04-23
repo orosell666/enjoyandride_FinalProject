@@ -67,6 +67,9 @@ class Moto(db.Model):
             "image_url" : self.image_url,
             "provincia" : self.provincia,
             "ciudad" : self.ciudad,
+            "priceday": self.priceday,
+            "priceweek": self.priceweek,
+            
 
         }    
 

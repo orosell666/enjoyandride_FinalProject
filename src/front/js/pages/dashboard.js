@@ -14,21 +14,42 @@ export const Dashboard = () => {
                 <div>
 
                     <div className="container">
-                        <h1 className="text-center mt-5">Ficha de Usuario</h1>
+                        <h1 className="text-center mt-5 border-bottom">Ficha de Usuario</h1>
                         <div className="d-flex justify-content-evenly mt-5">
                             <div >
                                 <div className="d-grid gap-3 ">
-                                    <div className="p-2 bg-light border rounded"><strong>Nombre:  </strong>{store.respuesta.nombre}</div>
-                                    <div className="p-2 bg-light border rounded"><strong>Teléfono:  </strong>{store.respuesta.telefono}</div>
-                                    <div className="p-2 bg-light border rounded"><strong>Dirección:  </strong>{store.respuesta.direccion}</div>
-                                </div>
+                                    <div class="mb-3 row g-3">
+                                        <label for="staticEmail" className="col-sm-2 col-form-label text "><strong>Nombre:</strong></label>
+                                        <div className="col-sm-10">
+                                            <input type="text" readonly className="form-control-plaintext border-bottom " id="staticEmail" value={store.respuesta.nombre} />
+                                        </div>
+                                        <label for="staticEmail" className="col-sm-2 col-form-label text"><strong>Teléfono:</strong></label>
+                                        <div className="col-sm-10">
+                                            <input type="text" readonly className="form-control-plaintext border-bottom" id="staticEmail" value={store.respuesta.telefono} />
+                                        </div>
+                                        <label for="staticEmail" class="col-sm-2 col-form-label text"><strong>Dirección:</strong></label>
+                                        <div className="col-sm-10">
+                                            <input type="text" readonly className="form-control-plaintext border-bottom" id="staticEmail" value={store.respuesta.direccion} />
+                                        </div>
+                                    </div></div>
 
                             </div>
                             <div className="me-5">
                                 <div className="d-grid gap-3">
-                                    <div className="p-2 bg-light border rounded"><strong>Apellidos:  </strong>{store.respuesta.apellidos}</div>
-                                    <div className="p-2 bg-light border rounded"><strong>Email:  </strong>{store.respuesta.email}</div>
-                                    <div className="p-2 bg-light border rounded"><strong>Carnet:  </strong>{store.respuesta.license}</div>
+                                    <div className="mb-3 row g-3">
+                                        <label for="staticEmail" className="col-sm-2 col-form-label text"><strong>Apellidos:</strong></label>
+                                        <div className="col-sm-10">
+                                            <input type="text" readonly className="form-control-plaintext border-bottom" id="staticEmail" value={store.respuesta.apellidos} />
+                                        </div>
+                                        <label for="staticEmail" className="col-sm-2 col-form-label text"><strong>Email:</strong></label>
+                                        <div className="col-sm-10">
+                                            <input type="text" readonly className="form-control-plaintext border-bottom" id="staticEmail" value={store.respuesta.email} />
+                                        </div>
+                                        <label for="staticEmail" className="col-sm-2 col-form-label text"><strong>Licencia:</strong></label>
+                                        <div className="col-sm-10">
+                                            <input type="text" readonly className="form-control-plaintext border-bottom" id="staticEmail" value={store.respuesta.license} />
+                                        </div>
+                                    </div>
                                 </div>
 
                             </div>

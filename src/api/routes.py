@@ -81,23 +81,24 @@ def registro():
 @jwt_required()
 def registroMoto():
 
-    user_id = get_jwt_identity()    
-  
-    power = request.form.get('power')
-    priceday = request.form.get('priceday')
-    priceweek = request.form.get('priceweek')
-    discount_weekend = request.form.get('discount_weekend')
-    discount_week = request.form.get('discount_week')
-    comment = request.form.get('comment')
-    provincia = request.form.get('provincia')
-    ciudad = request.form.get('ciudad')
-    result = cloudinary.uploader.upload(request.files['image'])
+    user_id = get_jwt_identity()
+    data = request.form
+    
+    power = data.get('power')
+    priceday = data.get('priceday')
+    priceweek = data.get('priceweek')
+    discount_weekend = data.get('discount_weekend')
+    discount_week = data.get('discount_week')
+    comment = data.get('comment')
+    provincia = data.get('provincia')
+    ciudad = data.get('ciudad')
+    result = cloudinary.uploader.upload(request.files['file'])
     image_url = result['secure_url']
-    latitud = request.form.get('latitud')
-    longitud = request.form.get('longitud')
-    matricula = request.form.get('matricula')
-    modelo_id = request.form.get('modelo_id')
-    tipo_id = request.form.get('tipo_id')
+    latitud = data.get('latitud')
+    longitud = data.get('longitud')
+    matricula = data.get('matricula')
+    modelo_id = data.get('modelo_id')
+    tipo_id = data.get('tipo_id')
 
     moto = Moto(power= power, priceday= priceday, priceweek= priceweek, discount_weekend= discount_weekend, discount_week= discount_week, comment= comment, provincia= provincia, 
     ciudad= ciudad, latitud= latitud, longitud= longitud,  modelo_id= modelo_id, tipo_id= tipo_id, user_id= user_id, matricula= matricula, image_url= image_url)
@@ -118,7 +119,6 @@ def registroMoto():
         "imagen": moto.image_url,
     }
     return jsonify(data_response), 200
-
 
 @api.route('/marca', methods=['POST'])
 def loadMarca():
