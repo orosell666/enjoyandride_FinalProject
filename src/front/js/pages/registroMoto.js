@@ -32,20 +32,20 @@ export const RegisterMoto = () => {
 
                 <div className="row">
                     <div className="col mt-2">
-                        <label htmlFor="exampleDataList" className="form-label text ">Marca *</label>
+                        <label htmlFor="exampleDataList" className="form-label text ">Marca<strong className="redDot"> *</strong></label>
                         <input className="form-control text-muted " aria-label="Default select example" name="marca_id" onChange={(e) => changeData(e)}>
 
 
                         </input>
                     </div>
                     <div className="col mt-2">
-                        <label htmlFor="formGroupExampleInput" className="form-label text">Modelo *</label>
+                        <label htmlFor="formGroupExampleInput" className="form-label text">Modelo<strong className="redDot"> *</strong></label>
                         <input className="form-control text-muted" aria-label="Default select example" name="modelo_id" onChange={(e) => changeData(e)}>
                         </input>
                     </div>
                     <div className="row">
                         <div className="col mt-2">
-                            <label htmlFor="formGroupExampleInput" className="form-label text">Tipo *</label>
+                            <label htmlFor="formGroupExampleInput" className="form-label text">Tipo<strong className="redDot"> *</strong></label>
                             <select className="form-select text-muted" aria-label="Default select example" name="tipo_id" onChange={(e) => changeData(e)}>
                                 <option selected >Selecciona Tipo</option>
                                 <option value="1">Naked</option>
@@ -57,7 +57,7 @@ export const RegisterMoto = () => {
                             </select>
                         </div>
                         <div className="col mt-2">
-                            <label htmlFor="formGroupExampleInput" className="form-label text">Cilindrada *</label>
+                            <label htmlFor="formGroupExampleInput" className="form-label text">Cilindrada<strong className="redDot"> *</strong></label>
                             <input type="text" className="form-control text-muted" placeholder="" aria-label="Last name" name="power" onChange={(e) => changeData(e)} />
                         </div>
                     </div>
@@ -97,21 +97,21 @@ export const RegisterMoto = () => {
                     </div>
                     <div className="row">
                         <div className="col mt-2">
-                            <label htmlFor="formGroupExampleInput" className="form-label text">Provincia *</label>
+                            <label htmlFor="formGroupExampleInput" className="form-label text">Provincia<strong className="redDot"> *</strong></label>
                             <input type="text" className="form-control text-muted" placeholder="" aria-label="First name" name="provincia" onChange={(e) => changeData(e)} />
                         </div>
                         <div className="col mt-2">
-                            <label htmlFor="formGroupExampleInput" className="form-label text">Ciudad *</label>
+                            <label htmlFor="formGroupExampleInput" className="form-label text">Ciudad<strong className="redDot"> *</strong></label>
                             <input type="text" className="form-control text-muted" placeholder="" aria-label="Last name" name="ciudad" onChange={(e) => changeData(e)} />
                         </div>
                     </div>
                     <div className="row">
                         <div className="col mt-2">
-                            <label htmlFor="formGroupExampleInput" className="form-label text">Email de contacto *</label>
+                            <label htmlFor="formGroupExampleInput" className="form-label text">Email de contacto<strong className="redDot"> *</strong></label>
                             <input type="text" className="form-control text-muted" placeholder="" aria-label="First name" name="email" onChange={(e) => changeData(e)} />
                         </div>
                         <div className="col mt-2">
-                            <label htmlFor="formGroupExampleInput" className="form-label text">Teléfono de contacto *</label>
+                            <label htmlFor="formGroupExampleInput" className="form-label text">Teléfono de contacto<strong className="redDot"> *</strong></label>
                             <input type="text" className="form-control text-muted" placeholder="" aria-label="Last name" name="telefono" onChange={(e) => changeData(e)} />
                         </div>
                     </div>

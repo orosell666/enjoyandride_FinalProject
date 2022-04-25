@@ -34,3 +34,7 @@ h1 {
 div > a {
   text-decoration: none;
 }
+
+.redDot {
+  color: rgb(246, 5, 5);
+}
