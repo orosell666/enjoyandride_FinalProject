@@ -11,12 +11,18 @@ export const Home = () => {
 	return (
 		<div>
 			<div className="container">
+				<img className="img-fluid" src="https://res.cloudinary.com/orosell666/image/upload/c_fill,g_auto,h_456,w_1296/b_rgb:000000,e_gradient_fade,y_-0.50/c_scale,co_rgb:ffffff,fl_relative,/v1650639577/alvin-mahmudov-Iy1Ivaa393M-unsplash_ykcq3u.jpg" /></div>
+			<div className="container">
 				<Component1 />
 			</div>
 			<div className="container">
-				<MotoCard />
+				<div className="col-md">
+					<div className="card-group">
+						<MotoCard />
+					</div>
+				</div>
 			</div>
 
-		</div>
+		</div >
 	);
 };

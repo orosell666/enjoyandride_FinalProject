@@ -28,3 +28,8 @@ h1 {
 .text {
   color: #575fcc;
 }
+
+/* ESTO ES PARA QUITAR LA LINEA AZUL DEBAJO DEL TÍTULO EN EL NAVBAR */
+div > a {
+  text-decoration: none;
+}

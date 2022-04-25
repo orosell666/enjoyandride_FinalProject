@@ -7,6 +7,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			datosUsuario: {},
 			datosMoto: {},
 			motos: [],
+			motosUser: [],
+
 
 
 		},
@@ -21,6 +23,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(resp => resp.json())
 
 					.then(data => setStore({ motos: data }))
+				// .catch(error => console.log("Error al recuperar las motos", error));
+
+			},
+
+			cargarMotosUser: async (user_id) => {
+
+				await fetch(process.env.BACKEND_URL + "/api/recuperaMotos/" + user_id)
+					.then(resp => resp.json())
+
+					.then(data => setStore({ motosUser: data }))
 				// .catch(error => console.log("Error al recuperar las motos", error));
 
 			},
@@ -65,7 +77,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					method: "POST",
 					headers: {
 						"Authorization": "Bearer " + token, // ⬅⬅⬅ authorization header
-
 					},
 					body: moto
 				})
@@ -79,7 +90,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			loadMarca: () => {
 				fetch(process.env.BACKEND_URL + "/api/marca")
 					.then((res) => res.json())
-					.then((res) => setStore({ marca: res.results }))
+					.then((data) => setStore({ marca: data }))
 					.catch((error) => console.error(error));
 			},
 			loadModelo: () => {

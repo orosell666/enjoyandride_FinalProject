@@ -14,12 +14,14 @@ export const Login = () => {
     let history = useHistory();
 
     return (
-        <div className="container mt-5 mx-auto ">
+        <div >
 
             {store.respuesta.token ? history.push('/dashboard') : ""}
-            <form >
-                <div >
-                    <label for="exampleFormControlInput1" className="form-label text-muted">Email</label><br />
+            <div className="container">
+                <img className="img-fluid" src="https://res.cloudinary.com/orosell666/image/upload/c_fill,g_auto,h_456,w_1296/b_rgb:000000,e_gradient_fade,y_-0.50/c_scale,co_rgb:ffffff,fl_relative,/v1650639584/harley-davidson-rEPAjhzt7TY-unsplash_pgfixd.jpg" /></div>
+            <form className=" container ">
+                <div className="">
+                    <label for="exampleFormControlInput1" className="form-label text-muted mx-auto">Email</label><br />
                     <input
                         autoFocus
                         type="email"
@@ -56,7 +58,7 @@ export const Login = () => {
 
 
             </form>
-        </div>
+        </div >
     );
 };
 

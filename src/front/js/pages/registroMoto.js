@@ -11,6 +11,7 @@ export const RegisterMoto = () => {
 
     const Register = () => {
         const formData = new FormData();
+
         for (var key in moto) {
             formData.append(key, moto[key]);
         }
@@ -32,7 +33,7 @@ export const RegisterMoto = () => {
                 <div className="row">
                     <div className="col mt-2">
                         <label htmlFor="exampleDataList" className="form-label text ">Marca *</label>
-                        <input className="form-control text-muted" aria-label="Default select example" name="marca_id" onChange={(e) => changeData(e)}>
+                        <input className="form-control text-muted " aria-label="Default select example" name="marca_id" onChange={(e) => changeData(e)}>
 
 
                         </input>
@@ -88,6 +89,16 @@ export const RegisterMoto = () => {
                             <input type="text" className="form-control text-muted" placeholder="" aria-label="Last name" name="ciudad" onChange={(e) => changeData(e)} />
                         </div>
                     </div>
+                    <div className="row">
+                        <div className="col mt-2">
+                            <label htmlFor="formGroupExampleInput" className="form-label text">Email de contacto *</label>
+                            <input type="text" className="form-control text-muted" placeholder="" aria-label="First name" name="email" onChange={(e) => changeData(e)} />
+                        </div>
+                        <div className="col mt-2">
+                            <label htmlFor="formGroupExampleInput" className="form-label text">Teléfono de contacto *</label>
+                            <input type="text" className="form-control text-muted" placeholder="" aria-label="Last name" name="telefono" onChange={(e) => changeData(e)} />
+                        </div>
+                    </div>
 
                     <div className="row">
                         <div className="col mt-2">
@@ -116,14 +127,15 @@ export const RegisterMoto = () => {
 
                     </div>
 
+                    <div className="d-flex justify-content-center mt-5">
 
 
 
-                    <button type="button" className="btn btn-primary mt-5" onClick={() => {
-                        Register()
+                        <button type="button" className="btn btn-secondary" onClick={() => {
+                            Register()
 
 
-                    }}>Enviar</button>
+                        }}>Añadir moto</button></div>
 
                 </div>
                 : <Redirect to="/login" />

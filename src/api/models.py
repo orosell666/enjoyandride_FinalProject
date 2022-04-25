@@ -37,8 +37,8 @@ class Moto(db.Model):
     provincia = db.Column(db.String(300), nullable=False)
     ciudad = db.Column(db.String(300), nullable=False)
     image_url = db.Column(db.String(300), nullable=False)
-    latitud = db.Column(db.String, nullable=True)
-    longitud = db.Column(db.String, nullable=True)
+    email = db.Column(db.String, nullable=True)
+    telefono = db.Column(db.String, nullable=True)
     matricula = db.Column(db.String, nullable=False)
 
     
@@ -61,7 +61,8 @@ class Moto(db.Model):
 
     def serialize(self):
         return {
-            "modelo_id": self.id,
+            "modelo": self.modelo.name,
+            "marca" : self.modelo.marca.name,
             "id" : self.id,
             "power":  self.power,
             "image_url" : self.image_url,
@@ -69,6 +70,8 @@ class Moto(db.Model):
             "ciudad" : self.ciudad,
             "priceday": self.priceday,
             "priceweek": self.priceweek,
+            "telefono": self.telefono,
+            "email": self.email
             
 
         }    

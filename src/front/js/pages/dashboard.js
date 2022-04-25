@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
-
+import { MotoCardUser } from "../component/usermotocard";
 
 
 export const Dashboard = () => {
@@ -18,9 +18,9 @@ export const Dashboard = () => {
                         <div className="d-flex justify-content-evenly mt-5">
                             <div >
                                 <div className="d-grid gap-3 ">
-                                    <div class="mb-3 row g-3">
+                                    <div class="mb-3 row g-3 ">
                                         <label for="staticEmail" className="col-sm-2 col-form-label text "><strong>Nombre:</strong></label>
-                                        <div className="col-sm-10">
+                                        <div className="col-sm-10 ">
                                             <input type="text" readonly className="form-control-plaintext border-bottom " id="staticEmail" value={store.respuesta.nombre} />
                                         </div>
                                         <label for="staticEmail" className="col-sm-2 col-form-label text"><strong>Teléfono:</strong></label>
@@ -34,7 +34,7 @@ export const Dashboard = () => {
                                     </div></div>
 
                             </div>
-                            <div className="me-5">
+                            <div className="ms-5">
                                 <div className="d-grid gap-3">
                                     <div className="mb-3 row g-3">
                                         <label for="staticEmail" className="col-sm-2 col-form-label text"><strong>Apellidos:</strong></label>
@@ -57,9 +57,15 @@ export const Dashboard = () => {
                     </div>
                     <div className="d-flex justify-content-center mt-5">
                         <Link to="/registroMoto">
-                            <button className="btn btn-secondary  ">Registrar Moto</button>
+                            <button className="btn btn-secondary  ">Añadir moto</button>
                         </Link>
                     </div>
+                    <div className="container mt-5">
+                        <div className="col-md">
+                            <div className="card-group">
+                                <MotoCardUser />
+                            </div></div></div>
+
 
                 </div>
                 : <Redirect to="/login" />
