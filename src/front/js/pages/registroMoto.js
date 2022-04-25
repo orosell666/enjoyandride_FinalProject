@@ -44,35 +44,51 @@ export const RegisterMoto = () => {
                         </input>
                     </div>
                     <div className="row">
-                        <div className="col">
-                            <label htmlFor="formGroupExampleInput" className="form-label text">Potencia *</label>
-                            <select className="form-select text-muted" aria-label="Default select example" name="power" onChange={(e) => changeData(e)}>
-                                <option selected >Selecciona Potencia</option>
-                                <option value="1">500 o más</option>
-                                <option value="2">250</option>
-                                <option value="3">125</option>
+                        <div className="col mt-2">
+                            <label htmlFor="formGroupExampleInput" className="form-label text">Tipo *</label>
+                            <select className="form-select text-muted" aria-label="Default select example" name="tipo_id" onChange={(e) => changeData(e)}>
+                                <option selected >Selecciona Tipo</option>
+                                <option value="1">Naked</option>
+                                <option value="2">Trail</option>
+                                <option value="3">Custom</option>
+                                <option value="4">R-style</option>
+                                <option value="5">Scooter</option>
 
                             </select>
                         </div>
                         <div className="col mt-2">
-                            <label htmlFor="formGroupExampleInput" className="form-label text">Precio por día *</label>
-                            <input type="text" className="form-control text-muted" placeholder="" aria-label="Last name" name="priceday" onChange={(e) => changeData(e)} />
+                            <label htmlFor="formGroupExampleInput" className="form-label text">Cilindrada *</label>
+                            <input type="text" className="form-control text-muted" placeholder="" aria-label="Last name" name="power" onChange={(e) => changeData(e)} />
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col mt-4 input-group mb-3">
+                            <span className="input-group-text text">Precio por día    </span>
+                            <input type="text" className="form-control text-muted  " placeholder="" aria-label="Last name" name="priceday" onChange={(e) => changeData(e)} />
+                            <span className="input-group-text">€</span>
+                        </div>
+                        <div className="col mt-4 input-group mb-3">
+                            <span className="input-group-text text">Precio por día (+ de 3)</span>
+                            <input type="text" className="form-control text-muted  " placeholder="" aria-label="Last name" name="discount_weekend" onChange={(e) => changeData(e)} />
+                            <span className="input-group-text">€</span>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col mt-4 input-group mb-3">
+                            <span className="input-group-text text">Precio por semana</span>
+                            <input type="text" className="form-control text-muted  " placeholder="" aria-label="Last name" name="priceweek" onChange={(e) => changeData(e)} />
+                            <span className="input-group-text">€</span>
+                        </div>
+                        <div className="col mt-4 input-group mb-3">
+                            <span className="input-group-text text">Precio por día (+ de 7)</span>
+                            <input type="text" className="form-control text-muted  " placeholder="" aria-label="Last name" name="discount_week" onChange={(e) => changeData(e)} />
+                            <span className="input-group-text">€</span>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col mt-2">
-                            <label htmlFor="formGroupExampleInput" className="form-label text">Precio por semana *</label>
-                            <input type="text" className="form-control" placeholder="" aria-label="First name" name="priceweek" onChange={(e) => changeData(e)} />
-                        </div>
-                        <div className="col mt-2">
-                            <label htmlFor="formGroupExampleInput" className="form-label text">Descuento Fin de semana</label>
-                            <input type="text" className="form-control text-muted" placeholder="" aria-label="Last name" name="discount_weekend" onChange={(e) => changeData(e)} />
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col mt-2">
-                            <label htmlFor="formGroupExampleInput" className="form-labe text">Descuento por semana</label>
-                            <input type="text" className="form-control text-muted" placeholder="" aria-label="First name" name="discount_week" onChange={(e) => changeData(e)} />
+                            <label htmlFor="formGroupExampleInput" className="form-labe text">Matrícula</label>
+                            <input type="text" className="form-control text-muted" placeholder="" aria-label="First name" name="matricula" onChange={(e) => changeData(e)} />
                         </div>
                         <div className="col mt-2">
                             <label htmlFor="formGroupExampleInput" className="form-label text">Comentarios</label>
@@ -100,24 +116,7 @@ export const RegisterMoto = () => {
                         </div>
                     </div>
 
-                    <div className="row">
-                        <div className="col mt-2">
-                            <label htmlFor="formGroupExampleInput" className="form-label text">Tipo *</label>
-                            <select className="form-select text-muted" aria-label="Default select example" name="tipo_id" onChange={(e) => changeData(e)}>
-                                <option selected >Selecciona Tipo</option>
-                                <option value="1">Naked</option>
-                                <option value="2">Trail</option>
-                                <option value="3">Custom</option>
-                                <option value="4">R-style</option>
-                                <option value="5">Scooter</option>
 
-                            </select>
-                        </div>
-                        <div className="col mt-2">
-                            <label htmlFor="formGroupExampleInput" className="form-label text">Matricula *</label>
-                            <input type="text" className="form-control text-muted" placeholder="" aria-label="Last name" name="matricula" onChange={(e) => changeData(e)} />
-                        </div>
-                    </div>
 
 
 

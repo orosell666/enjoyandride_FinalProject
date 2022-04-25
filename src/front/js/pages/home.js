@@ -16,7 +16,7 @@ export const Home = () => {
 				<Component1 />
 			</div>
 			<div className="container">
-				<div className="col-md">
+				<div className="col-md ">
 					<div className="card-group">
 						<MotoCard />
 					</div>

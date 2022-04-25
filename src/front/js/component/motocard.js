@@ -19,7 +19,7 @@ export const MotoCard = () => {
         store.motos.map((value, index) => {
             return (
 
-                <div className="card mb-3 mx-2 shadow p-3 mb-5 bg-body rounded" key={index}>
+                <div className="card mb-5 mx-2 shadow p-3 .col-md-12  bg-body rounded" key={index}>
                     <img src={value.image_url} className="card-img-top px-1 py-2" alt="Moto" />
                     <div className="card-body">
                         <h5 className="card-title">{value.ciudad}</h5>

@@ -1,17 +1,5 @@
-<div className="card-group">
-    <div className="card">
-        <img src="..." className="card-img-top" alt="..." />
-        <div className="card-body">
-            <h5 className="card-title">Card title</h5>
-            <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
-        </div>
-    </div>
+<div className="input-group mb-3">
+    <span className="input-group-text text">Precio por día</span>
+    <input type="text" className="form-control text-muted  " placeholder="" aria-label="Last name" name="priceday" onChange={(e) => changeData(e)} />
+    <span className="input-group-text">€</span>
 </div>
-
-
-{
-    store.respuesta.map((valor, index) => (<div key={index}>
-        <p className="card-text">Telefono:{valor.telefono}</p>
-        <p className="card-text">Email:{valor.email}</p></div>))
-}
