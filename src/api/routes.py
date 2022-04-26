@@ -7,6 +7,10 @@ from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from datetime import datetime
+import cloudinary
+import cloudinary.uploader
+import json
+
 
 
 api = Blueprint('api', __name__)
@@ -32,7 +36,13 @@ def login():
         "email": user.email,
         "userID": user.id,
         "message": "conseguido!",
-        "color": "success"
+        "color": "success",
+        "telefono": user.phonenumber,
+        "nombre": user.name,
+        "apellidos": user.lastName,
+        "direccion": user.adress,
+        "birthdate": user.birthdate,
+        "license": user.license
     }
     return jsonify(data_response), 200
 
@@ -71,25 +81,30 @@ def registro():
 @jwt_required()
 def registroMoto():
 
-    user_id = get_jwt_identity()    
-
-    power = request.json.get('power')
-    priceday = request.json.get('priceday')
-    priceweek = request.json.get('priceweek')
-    discount_weekend = request.json.get('discount_weekend')
-    discount_week = request.json.get('discount_week')
-    comment = request.json.get('comment')
-    provincia = request.json.get('provincia')
-    ciudad = request.json.get('ciudad')
     
-    latitud = request.json.get('latitud')
-    longitud = request.json.get('longitud')
-    matricula = request.json.get('matricula')
-    modelo_id = request.json.get('modelo_id')
-    tipo_id = request.json.get('tipo_id')
+    print(request.files.get('file'))
+    
+    user_id = get_jwt_identity()
+    data = request.form
+
+    power = data.get('power')
+    priceday = data.get('priceday')
+    priceweek = data.get('priceweek')
+    discount_weekend = data.get('discount_weekend')
+    discount_week = data.get('discount_week')
+    comment = data.get('comment')
+    provincia = data.get('provincia')
+    ciudad = data.get('ciudad')
+    result = cloudinary.uploader.upload(request.files['file'])
+    image_url = result['secure_url']
+    email = data.get('email')
+    telefono = data.get('telefono')
+    matricula = data.get('matricula')
+    modelo_id = data.get('modelo_id')
+    tipo_id = data.get('tipo_id')
 
     moto = Moto(power= power, priceday= priceday, priceweek= priceweek, discount_weekend= discount_weekend, discount_week= discount_week, comment= comment, provincia= provincia, 
-    ciudad= ciudad, latitud= latitud, longitud= longitud,  modelo_id= modelo_id, tipo_id= tipo_id, user_id= user_id, matricula= matricula)
+    ciudad= ciudad, email= email, telefono= telefono,  modelo_id= modelo_id, tipo_id= tipo_id, user_id= user_id, matricula= matricula, image_url= image_url)
     db.session.add(moto)
     db.session.commit()
 
@@ -102,11 +117,11 @@ def registroMoto():
         "comment": moto.comment,
         "provincia": moto.provincia,
         "ciudad": moto.ciudad,
-        "latitud": moto.latitud,
-        "longitud": moto.longitud
+        "email": moto.email,
+        "telefono": moto.telefono,
+        "imagen": moto.image_url,
     }
     return jsonify(data_response), 200
-
 
 @api.route('/marca', methods=['POST'])
 def loadMarca():
@@ -121,6 +136,13 @@ def loadMarca():
     }
     return jsonify(data_response), 200
 
+
+
+
+
+
+
+#ESTE ENDOINT SIRVE PARA....
 @api.route('/marca', methods=['GET'])
 def getMarca():
     
@@ -185,3 +207,38 @@ def handle_hello():
     }
 
     return jsonify(response_body), 200
+
+@api.route('/upload', methods=['POST'])
+def handle_upload():
+
+    moto1 = Moto.query.get(1)
+    result = cloudinary.uploader.upload(request.files ['image'])
+    print(result['secure_url'])
+
+    moto.image_url = result['secure_url']
+
+    db.session.commit()
+
+    return jsonify("all good"), 200
+
+
+#ESTE ENDPOINT ME DEVUELVE TODAS LAS MOTOS EN EL COMPONENTE MotoCArd
+@api.route('/recuperaMotos', methods=['GET'])
+def recuperaMotos():
+    
+    motos = Moto.query.all()
+     
+    all_motos = list(map(lambda x: x.serialize(), motos))
+
+    return jsonify(all_motos), 200
+
+
+
+@api.route('/recuperaMotos/<int:user_id>', methods=['GET'])
+def recuperaMotosUser(user_id):
+    
+    motos = Moto.query.filter_by(user_id = user_id).all()
+     
+    all_motos = list(map(lambda x: x.serialize(), motos))
+
+    return jsonify(all_motos), 200

@@ -12,16 +12,16 @@ export const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     let history = useHistory();
-    function validateForm() {
-        return email.length > 0 && password.length > 0;
-    }
 
-
-    function sideIn() { }
     return (
-        <div className="container mt-5 ">
-            <form className="justify-content-center">
-                <div >
+        <div >
+
+            {store.respuesta.token ? history.push('/dashboard') : ""}
+            <div className="container">
+                <img className="img-fluid" src="https://res.cloudinary.com/orosell666/image/upload/c_fill,g_auto,h_456,w_1296/b_rgb:000000,e_gradient_fade,y_-0.50/c_scale,co_rgb:ffffff,fl_relative,/v1650639584/harley-davidson-rEPAjhzt7TY-unsplash_pgfixd.jpg" /></div>
+            <form className=" container ">
+                <div className="">
+                    <label for="exampleFormControlInput1" className="form-label text-muted justify-content-center">Email</label><br />
                     <input
                         autoFocus
                         type="email"
@@ -30,7 +30,8 @@ export const Login = () => {
                         placeholder="Email"
                     />
                 </div>
-                <div className="form-group">
+                <div className="form-group mt-2">
+                    <label for="exampleFormControlInput1" className="form-label text-muted">Contraseña</label><br />
                     <input
                         type="password"
                         value={password}
@@ -41,29 +42,23 @@ export const Login = () => {
 
                 <button
                     type="button"
-                    className="btn btn-dark mt-3 "
+                    className="btn btn-secondary mt-3 "
                     //disabled={!validateForm()}
                     onClick={() => {
                         actions.generateToken(email, password)
-                        store.respuesta.token ? history.push('/dashboard') : ""
+
 
 
                     }}
                 >
-                    Submit
+                    Entrar
                 </button>
 
 
-                {store.respuesta.message ? <div className={`alert alert-${store.respuesta.color}`} role="alert">
-                    <h4 className="alert-heading">Well done!</h4>
-                    <p>el email es: {store.respuesta.email}</p>
-
-                </div>
-                    : ""}
 
 
             </form>
-        </div>
+        </div >
     );
 };
 

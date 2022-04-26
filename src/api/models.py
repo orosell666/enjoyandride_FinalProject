@@ -10,8 +10,8 @@ class User(db.Model):
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
     name = db.Column(db.String(80), nullable=False)
     lastName = db.Column(db.String(120), nullable=False)
-    phonenumber = db.Column(db.String(120), unique=True, nullable=False)
-    license = db.Column(db.String(120), unique=True, nullable=False)
+    phonenumber = db.Column(db.String(120), unique=False, nullable=False)
+    license = db.Column(db.String(120), unique=False, nullable=False)
     adress = db.Column(db.String(120), nullable=False)
     birthdate = db.Column(db.DateTime, nullable=False)
 
@@ -36,9 +36,9 @@ class Moto(db.Model):
     comment = db.Column(db.String(300), nullable=True)
     provincia = db.Column(db.String(300), nullable=False)
     ciudad = db.Column(db.String(300), nullable=False)
-    
-    latitud = db.Column(db.String, nullable=True)
-    longitud = db.Column(db.String, nullable=True)
+    image_url = db.Column(db.String(300), nullable=False)
+    email = db.Column(db.String, nullable=True)
+    telefono = db.Column(db.String, nullable=True)
     matricula = db.Column(db.String, nullable=False)
 
     
@@ -58,6 +58,28 @@ class Moto(db.Model):
 
     def __repr__(self):
         return '<Moto %r>' % self.id
+
+    def serialize(self):
+        return {
+            "modelo": self.modelo.name,
+            "marca" : self.modelo.marca.name,
+            "id" : self.id,
+            "power":  self.power,
+            "image_url" : self.image_url,
+            "provincia" : self.provincia,
+            "ciudad" : self.ciudad,
+            "priceday": self.priceday,
+            "priceweek": self.priceweek,
+            "telefono": self.telefono,
+            "email": self.email
+            
+
+        }    
+
+
+
+
+
 
 
 class Modelo(db.Model):

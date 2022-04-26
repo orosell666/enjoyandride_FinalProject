@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 0d12f06f58b2
+Revision ID: 8a7890233771
 Revises: 
-Create Date: 2022-03-31 14:32:01.994744
+Create Date: 2022-04-23 15:49:38.101430
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '0d12f06f58b2'
+revision = '8a7890233771'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -40,9 +40,7 @@ def upgrade():
     sa.Column('adress', sa.String(length=120), nullable=False),
     sa.Column('birthdate', sa.DateTime(), nullable=False),
     sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('email'),
-    sa.UniqueConstraint('license'),
-    sa.UniqueConstraint('phonenumber')
+    sa.UniqueConstraint('email')
     )
     op.create_table('modelo',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -61,7 +59,7 @@ def upgrade():
     sa.Column('comment', sa.String(length=300), nullable=True),
     sa.Column('provincia', sa.String(length=300), nullable=False),
     sa.Column('ciudad', sa.String(length=300), nullable=False),
-    sa.Column('direccion', sa.String(length=300), nullable=False),
+    sa.Column('image_url', sa.String(length=300), nullable=False),
     sa.Column('latitud', sa.String(), nullable=True),
     sa.Column('longitud', sa.String(), nullable=True),
     sa.Column('matricula', sa.String(), nullable=False),
