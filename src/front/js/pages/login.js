@@ -21,7 +21,7 @@ export const Login = () => {
                 <img className="img-fluid" src="https://res.cloudinary.com/orosell666/image/upload/c_fill,g_auto,h_456,w_1296/b_rgb:000000,e_gradient_fade,y_-0.50/c_scale,co_rgb:ffffff,fl_relative,/v1650639584/harley-davidson-rEPAjhzt7TY-unsplash_pgfixd.jpg" /></div>
             <form className=" container ">
                 <div className="">
-                    <label for="exampleFormControlInput1" className="form-label text-muted mx-auto">Email</label><br />
+                    <label for="exampleFormControlInput1" className="form-label text-muted justify-content-center">Email</label><br />
                     <input
                         autoFocus
                         type="email"
@@ -42,7 +42,7 @@ export const Login = () => {
 
                 <button
                     type="button"
-                    className="btn btn-dark mt-3 "
+                    className="btn btn-secondary mt-3 "
                     //disabled={!validateForm()}
                     onClick={() => {
                         actions.generateToken(email, password)
@@ -51,7 +51,7 @@ export const Login = () => {
 
                     }}
                 >
-                    Submit
+                    Entrar
                 </button>
 
 

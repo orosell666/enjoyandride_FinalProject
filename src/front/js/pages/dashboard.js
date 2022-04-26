@@ -52,8 +52,9 @@ export const Dashboard = () => {
                     </div>
 
                     <div className="container mt-5">
-                        <div className="col-md">
-                            <div className="card-group">
+
+                        <div className="card-group">
+                            <div className="row row-cols-1 row-cols-md-4 g-4">
                                 <MotoCardUser />
                             </div>
                         </div>

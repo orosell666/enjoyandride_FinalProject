@@ -19,7 +19,7 @@ export const Register = () => {
                 <img className="img-fluid" src="https://res.cloudinary.com/orosell666/image/upload/c_fill,g_auto,h_456,w_1296/b_rgb:000000,e_gradient_fade,y_-0.50/c_scale,co_rgb:ffffff,fl_relative,/v1650490129/a8vcjheho6e7mms0zebz.jpg" /></div>
             <div className="container mt-5">
                 <div className="row">
-                    <div className="col">
+                    <div className="col mt-2">
                         <label htmlFor="formGroupExampleInput" className="form-label text">Email</label>
                         <input type="text" className="form-control text-mute" placeholder="name@web.com" aria-label="First name" name="email" onChange={(e) => changeData(e)} />
                     </div>

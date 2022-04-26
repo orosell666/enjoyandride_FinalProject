@@ -32,10 +32,8 @@ export const RegisterMoto = () => {
 
                 <div className="row">
                     <div className="col mt-2">
-                        <label htmlFor="exampleDataList" className="form-label text ">Marca<strong className="redDot"> *</strong></label>
+                        <label htmlFor="formGroupExampleInput" className="form-label text ">Marca<strong className="redDot"> *</strong></label>
                         <input className="form-control text-muted " aria-label="Default select example" name="marca_id" onChange={(e) => changeData(e)}>
-
-
                         </input>
                     </div>
                     <div className="col mt-2">

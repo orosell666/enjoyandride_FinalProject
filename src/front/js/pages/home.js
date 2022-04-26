@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import { Component1 } from "../component/component1";
 import { MotoCard } from "../component/motocard";
+import { Buscador } from "../component/buscador";
 
 import "../../styles/home.css";
 
@@ -16,8 +17,11 @@ export const Home = () => {
 				<Component1 />
 			</div>
 			<div className="container">
-				<div className="col-md ">
-					<div className="card-group">
+				<Buscador />
+			</div>
+			<div className="container border-top ">
+				<div className="card-group mt-5 ">
+					<div className="row row-cols-1 row-cols-md-4 g-4">
 						<MotoCard />
 					</div>
 				</div>
