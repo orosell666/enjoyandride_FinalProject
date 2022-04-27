@@ -8,7 +8,24 @@ export const RegisterMoto = () => {
     const { actions, store } = useContext(Context);
     const [moto, setMoto] = useState({})
     const [files, setFiles] = useState(null);
-
+    const [modelos, setModelos] = useState([])
+    const [marcas, setMarcas] = useState([])
+    useEffect(() => {
+        getModelos()
+        getMarcas()
+    }, [])
+    const getModelos = () => {
+        fetch(process.env.BACKEND_URL + "/api/modelo")
+            .then((res) => res.json())
+            .then((res) => setModelos(res))
+            .catch((error) => console.error(error));
+    }
+    const getMarcas = () => {
+        fetch(process.env.BACKEND_URL + "/api/marca")
+            .then((res) => res.json())
+            .then((res) => setMarcas(res))
+            .catch((error) => console.error(error));
+    }
     const Register = () => {
         const formData = new FormData();
 
@@ -17,9 +34,10 @@ export const RegisterMoto = () => {
         }
         formData.append("file", files[0]);
         actions.generateMoto(formData);
-        history.goBack()
         alert("Moto creada correctamente!")
-        actions.cargarMotos()
+        actions.cargarMotos();
+
+        history.push("/dashboard")
     };
     let history = useHistory();
 
@@ -36,13 +54,32 @@ export const RegisterMoto = () => {
                 <div className="row">
                     <div className="col mt-2">
                         <label htmlFor="formGroupExampleInput" className="form-label text ">Marca<strong className="redDot"> *</strong></label>
-                        <input className="form-control text-muted " aria-label="Default select example" name="marca_id" onChange={(e) => changeData(e)}>
-                        </input>
+
+                        <select className="form-select text-muted" aria-label="Default select example" name="marca_id" onChange={(e) => changeData(e)}>
+                            <option disabled selected >Selecciona Marca</option>
+                            {
+                                marcas.map((value, index) => {
+                                    return <option value={value.id}>{value.name}</option>
+
+                                })
+                            }
+
+                        </select>
+
                     </div>
                     <div className="col mt-2">
                         <label htmlFor="formGroupExampleInput" className="form-label text">Modelo<strong className="redDot"> *</strong></label>
-                        <input className="form-control text-muted" aria-label="Default select example" name="modelo_id" onChange={(e) => changeData(e)}>
-                        </input>
+                        <select className="form-select text-muted" aria-label="Default select example" name="modelo_id" onChange={(e) => changeData(e)}>
+                            <option disabled selected >Selecciona Modelo</option>
+                            {
+                                modelos.map((value, index) => {
+                                    return <option value={value.id}>{value.name}</option>
+
+                                })
+                            }
+
+                        </select>
+
                     </div>
                     <div className="row">
                         <div className="col mt-2">
@@ -131,7 +168,7 @@ export const RegisterMoto = () => {
 
 
 
-                        <button type="button" className="btn btn-secondary" onClick={() => {
+                        <button type="button" className="btn btn-success" onClick={() => {
                             Register()
 
 

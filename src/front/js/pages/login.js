@@ -42,7 +42,7 @@ export const Login = () => {
 
                 <button
                     type="button"
-                    className="btn btn-secondary mt-3 "
+                    className="btn btn-success mt-3 "
                     //disabled={!validateForm()}
                     onClick={() => {
                         actions.generateToken(email, password)

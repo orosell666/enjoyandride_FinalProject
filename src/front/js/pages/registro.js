@@ -58,7 +58,7 @@ export const Register = () => {
                         <input type="text" className="form-control text-mute" placeholder="C/ Unica 23, 0000, Ciudad, Provincia" aria-label="Last name" name="adress" onChange={(e) => changeData(e)} />
                     </div>
                 </div>
-                <button type="button" className="btn btn-primary mt-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onClick={() => {
+                <button type="button" className="btn btn-success mt-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onClick={() => {
                     actions.generateRegister(user)
 
                 }}>Enviar</button>

@@ -35,8 +35,8 @@ export const MotoCard = () => {
                         <p className="card-text">{value.priceday} €/día</p>
 
                         <div class="card-footer bg-transparent border-success" style={footerposition}>
-                            <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target={`#id${value.id}`}>
-                                Reserva!
+                            <button type="button" className="btn btn-success" data-bs-toggle="modal" data-bs-target={`#id${value.id}`}>
+                                ¡Reserva!
                             </button>
                         </div>
 
@@ -55,6 +55,8 @@ export const MotoCard = () => {
                                         <p className="card-text"><strong className="text">Email:  </strong>{value.email}</p>
                                         <p className="card-text"><strong className="text">Precio por día:  </strong>{value.priceday} €</p>
                                         <p className="card-text"><strong className="text">Precio por semana:  </strong>{value.priceweek} €</p>
+                                        <p className="card-text"><strong className="text">Precio por día (+ de 3):  </strong>{value.discount_weekend} €</p>
+                                        <p className="card-text"><strong className="text">Precio por día (+ de 7):  </strong>{value.discount_week} €</p>
                                     </div>
                                 </div>
 
