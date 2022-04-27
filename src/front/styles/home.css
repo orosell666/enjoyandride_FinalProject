@@ -44,3 +44,7 @@ div > a {
   height: 180 px;
   width: 300px;
 }
+
+.scroll {
+  overflow-x: scroll;
+}

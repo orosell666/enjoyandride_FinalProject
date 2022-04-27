@@ -17,6 +17,9 @@ export const RegisterMoto = () => {
         }
         formData.append("file", files[0]);
         actions.generateMoto(formData);
+        history.goBack()
+        alert("Moto creada correctamente!")
+        actions.cargarMotos()
     };
     let history = useHistory();
 

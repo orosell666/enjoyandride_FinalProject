@@ -18,8 +18,8 @@ export const MotoCard = () => {
 
         store.motos.map((value, index) => {
             const imageSize = {
-                width: "250px",
-                height: "150 px",
+                width: "300px",
+                height: "180 px",
             }
             const footerposition = {
                 pb: "20px"
