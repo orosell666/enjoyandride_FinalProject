@@ -101,7 +101,7 @@ export const RegisterMoto = () => {
                     </div>
                     <div className="row">
                         <div className="col mt-4 input-group mb-3">
-                            <span className="input-group-text text">Precio por día    </span>
+                            <span className="input-group-text text">Precio por día <strong className="redDot"> *</strong>    </span>
                             <input type="text" className="form-control text-muted  " placeholder="" aria-label="Last name" name="priceday" onChange={(e) => changeData(e)} />
                             <span className="input-group-text">€</span>
                         </div>
@@ -113,7 +113,7 @@ export const RegisterMoto = () => {
                     </div>
                     <div className="row">
                         <div className="col mt-4 input-group mb-3">
-                            <span className="input-group-text text">Precio por semana</span>
+                            <span className="input-group-text text">Precio por semana <strong className="redDot"> *</strong></span>
                             <input type="text" className="form-control text-muted  " placeholder="" aria-label="Last name" name="priceweek" onChange={(e) => changeData(e)} />
                             <span className="input-group-text">€</span>
                         </div>
@@ -125,7 +125,7 @@ export const RegisterMoto = () => {
                     </div>
                     <div className="row">
                         <div className="col mt-2">
-                            <label htmlFor="formGroupExampleInput" className="form-labe text">Matrícula</label>
+                            <label htmlFor="formGroupExampleInput" className="form-labe text">Matrícula<strong className="redDot"> *</strong></label>
                             <input type="text" className="form-control text-muted" placeholder="" aria-label="First name" name="matricula" onChange={(e) => changeData(e)} />
                         </div>
                         <div className="col mt-2">
@@ -159,7 +159,7 @@ export const RegisterMoto = () => {
 
 
                     <div className=" col mb-3 mt-2">
-                        <label htmlFor="formGroupExampleInput" className="form-label text">Imágenes *</label>
+                        <label htmlFor="formGroupExampleInput" className="form-label text">Imágenes<strong className="redDot"> *</strong></label>
                         <input type="file" className="form-control text-muted" id="inputGroupFile02" onChange={(e) => setFiles(e.target.files)} />
 
                     </div>
@@ -168,7 +168,7 @@ export const RegisterMoto = () => {
 
 
 
-                        <button type="button" className="btn btn-success" onClick={() => {
+                        <button type="button" className="btn btn-success col-3" onClick={() => {
                             Register()
 
 

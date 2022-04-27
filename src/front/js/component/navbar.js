@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 
@@ -6,11 +6,35 @@ import { Context } from "../store/appContext";
 export const Navbar = () => {
 	const { actions, store } = useContext(Context);
 	const history = useHistory()
+
 	const logout = () => {
 		actions.logout();
 		localStorage.removeItem("token");
 		history.push("/login")
 	}
+
+	const goback = () => {
+		history.push("/dashboard")
+	}
+
+	useEffect(() => {
+		if (!localStorage.getItem("token")) {
+			history.push("/login")
+		}
+		actions.cargarMotosUser(localStorage.getItem("user_id"));
+		infoUser()
+
+	}, [])
+
+
+	const infoUser = () => {
+		fetch(process.env.BACKEND_URL + "/api/infouser", { headers: { "Authorization": "Bearer " + localStorage.getItem("token") } })
+			.then((res) => res.json())
+			.then((res) => setUser(res))
+			.catch((error) => console.error(error));
+	}
+
+
 	return (
 		<nav className="navbar ">
 
@@ -22,7 +46,7 @@ export const Navbar = () => {
 					{localStorage.getItem("token") ?
 						<div className="d-flex justify-content-end">
 							<Link to="/dashboard">
-								<button className="btn btn-success ">Ficha de Usuario</button>
+								<button className="btn btn-success " onClick={goback}>Ficha de Usuario</button>
 							</Link>
 							<div className="ms-3 me-3">
 

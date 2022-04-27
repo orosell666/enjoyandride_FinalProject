@@ -26,8 +26,8 @@ export const MotoCard = () => {
             }
             return (
 
-                <div className="card col-4 mb-3 shadow p-3 mb-5 bg-body rounded" key={index}>
-                    <img src={value.image_url} className="card-img-top mx-auto " style={imageSize} alt="Moto" />
+                <div className="card col-md-4 mb-3 shadow p-3 mb-5 bg-body rounded" key={index}>
+                    <img src={value.image_url} className="card-img-top img-fluid mx-auto " style={imageSize} alt="Moto" />
                     <div className="card-body text-center">
                         <h5 className="card-title text">{value.marca}, {value.modelo}</h5>
                         <p className="card-text">{value.ciudad}, {value.provincia}</p>
