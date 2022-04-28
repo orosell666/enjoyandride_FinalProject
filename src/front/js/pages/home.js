@@ -23,7 +23,7 @@ export const Home = () => {
 			</div>
 			<div className="container border-top ">
 				<div className="card-group mt-5 ">
-					<div className="row row-cols-1 row-cols-md-4 g-4 d-flex flex-row flex-nowrap overflow-auto">
+					<div className="row row-cols-1 row-cols-md- g-4 ">
 
 						<MotoCard />
 					</div>
@@ -33,3 +33,5 @@ export const Home = () => {
 		</div >
 	);
 };
+
+// d-flex flex-row flex-nowrap overflow-auto  PARA HACER CAROUSEL CON SLIDE DEBAJO

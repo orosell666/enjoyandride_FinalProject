@@ -14,7 +14,7 @@ export const Navbar = () => {
 	}
 
 	const goback = () => {
-		history.push("/dashboard")
+		history.back(-1)
 	}
 
 	useEffect(() => {
@@ -46,7 +46,7 @@ export const Navbar = () => {
 					{localStorage.getItem("token") ?
 						<div className="d-flex justify-content-end">
 							<Link to="/dashboard">
-								<button className="btn btn-success " onClick={goback}>Ficha de Usuario</button>
+								<button className="btn btn-success " onClick={goback}>←</button>
 							</Link>
 							<div className="ms-3 me-3">
 

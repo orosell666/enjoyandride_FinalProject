@@ -69,18 +69,18 @@ export const Dashboard = () => {
                 <div className="container">
                     <h2 className="text-center mt-5 border-bottom">Mis motos</h2>
                 </div>
-                <div className="container justify-content-center mt-3">
-                    <div className="row g-3 ">
+                <div className="container  mt-3 align-items-center">
+                    <div className="row ">
                         <Link to="/registroMoto">
                             <button type="button"
-                                className="btn btn-success  col-3 "><strong>+ </strong>Añadir moto</button>
+                                className="btn btn-success  col-3 align-self-center"><strong>+ </strong>Añadir moto</button>
                         </Link>
                     </div></div>
 
-                <div className="container mt-5 jsutify-content-center">
+                <div className="container mt-5 align-items-center">
 
                     <div className="card-group ">
-                        <div className=" row-cols-1 row-cols-md-3 g-4 d-flex flex-row flex-nowrap overflow-auto">
+                        <div className=" row-cols-1 row-cols-md-4 g-4 d-flex flex-row flex-nowrap overflow-auto">
                             <MotoCardUser />
                         </div>
                     </div>

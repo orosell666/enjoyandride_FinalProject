@@ -26,10 +26,10 @@ export const MotoCard = () => {
             }
             return (
 
-                <div className="card col-md-4 mb-3 shadow p-3 mb-5 bg-body rounded" key={index}>
+                <div className="card col-md-3 mb-3 shadow p-3 mb-5 bg-body rounded" key={index}>
                     <img src={value.image_url} className="card-img-top img-fluid mx-auto " style={imageSize} alt="Moto" />
                     <div className="card-body text-center">
-                        <h5 className="card-title text">{value.marca}, {value.modelo}</h5>
+                        <h5 className="card-title text"><strong>{value.marca}, {value.modelo}</strong></h5>
                         <p className="card-text">{value.ciudad}, {value.provincia}</p>
                         <p className="card-text">{value.power}cc</p>
                         <p className="card-text">{value.priceday} €/día</p>
@@ -43,9 +43,9 @@ export const MotoCard = () => {
                         <div className="modal fade" id={`id${value.id}`} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable text-center">
                                 <div className="modal-content">
-                                    <img src={value.image_url} style={imageSize} className="mx-auto" />
+                                    <img src={value.image_url} className="card-img-top img-fluid mx-auto " style={imageSize} />
                                     <div className="modal-header text-center ">
-                                        <h5 className="modal-title text text-center " id="staticBackdropLabel">{value.marca}, {value.modelo}</h5>
+                                        <h5 className="modal-title text text-center " id="staticBackdropLabel"><strong>{value.marca}, {value.modelo}</strong></h5>
                                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div className="modal-body">
