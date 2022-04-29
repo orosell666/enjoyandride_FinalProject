@@ -10,14 +10,16 @@ export const Dashboard = () => {
     const { store, actions } = useContext(Context);
     const history = useHistory()
     const [user, setUser] = useState({})
+    const [haveUser, setHaveUser] = useState(false)
     useEffect(() => {
         if (!localStorage.getItem("token")) {
             history.push("/login")
+            setHaveUser(true)
         }
         actions.cargarMotosUser(localStorage.getItem("user_id"));
         infoUser()
 
-    }, [])
+    }, [haveUser])
 
     const infoUser = () => {
         fetch(process.env.BACKEND_URL + "/api/infouser", { headers: { "Authorization": "Bearer " + localStorage.getItem("token") } })
@@ -28,7 +30,7 @@ export const Dashboard = () => {
 
     return (
 
-        <div>
+        <div className="">
 
             <div>
 
@@ -41,7 +43,7 @@ export const Dashboard = () => {
                                     <label htmlFor="inputEmail5" className="form-label text"><strong>Nombre:</strong></label>
                                     <input type="text" readonly className="form-control-plaintext border-bottom " id="staticEmail" value={user.nombre ? user.nombre : ""} />
                                 </div>
-                                <div className="col-md-5 ms-4">
+                                <div className="col-md-5 ms-5 ps-5">
                                     <label htmlFor="inputPassword5" className="form-label text"><strong>Apellidos:</strong></label>
                                     <input type="text" readonly className="form-control-plaintext border-bottom" id="staticEmail" value={user.apellidos ? user.apellidos : ""} />
 
@@ -50,7 +52,7 @@ export const Dashboard = () => {
                                     <label htmlFor="inputEmail5" className="form-label text"><strong>Email:</strong></label>
                                     <input type="text" readonly className="form-control-plaintext border-bottom" id="staticEmail" value={user.email ? user.email : ""} />
                                 </div>
-                                <div className="col-md-5 ms-4">
+                                <div className="col-md-5 ms-5 ps-5">
                                     <label htmlFor="inputPassword5" className="form-label text"><strong>Teléfono:</strong></label>
                                     <input type="text" readonly className="form-control-plaintext border-bottom" id="staticEmail" value={user.telefono ? user.telefono : ""} />
                                 </div>
@@ -58,7 +60,7 @@ export const Dashboard = () => {
                                     <label htmlFor="inputEmail5" className="form-label text"><strong>Dirección:</strong></label>
                                     <input type="text" readonly className="form-control-plaintext border-bottom" id="staticEmail" value={user.direccion ? user.direccion : ""} />
                                 </div>
-                                <div className="col-md-5 ms-4">
+                                <div className="col-md-5 ms-5 ps-5">
                                     <label htmlFor="inputPassword5" className="form-label text"><strong>Permiso:</strong></label>
                                     <input type="text" readonly className="form-control-plaintext border-bottom" id="staticEmail" value={user.license ? user.license : ""} />
                                 </div>
@@ -69,26 +71,27 @@ export const Dashboard = () => {
                 <div className="container">
                     <h2 className="text-center mt-5 border-bottom">Mis motos</h2>
                 </div>
-                <div className="container  mt-3 align-items-center">
-                    <div className="row ">
-                        <Link to="/registroMoto">
-                            <button type="button"
-                                className="btn btn-success  col-3 align-self-center"><strong>+ </strong>Añadir moto</button>
-                        </Link>
-                    </div></div>
+            </div>
 
-                <div className="container mt-5 align-items-center">
+            <div className="row justify-content-center d-grid gap-2 col-6 mx-auto">
+                <Link to="/registroMoto">
+                    <button type="button" className="btn btn-success mt-3 w-100"><strong>+ </strong>Añadir moto</button>
+                </Link>
+            </div>
 
-                    <div className="card-group ">
-                        <div className=" row-cols-1 row-cols-md-4 g-4 d-flex flex-row flex-nowrap overflow-auto">
-                            <MotoCardUser />
-                        </div>
+
+            <div className="d-flex container mt-5 justify-content-center">
+
+                <div className="card-group ">
+                    <div className=" row-cols-1 row-cols-md-4 g-4 d-flex flex-row flex-nowrap overflow-auto">
+                        <MotoCardUser />
                     </div>
                 </div>
-
-
-
             </div>
+
+
+
+
 
         </div>
     )

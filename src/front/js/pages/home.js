@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 
 import { Component1 } from "../component/component1";
@@ -7,9 +7,10 @@ import { Buscador } from "../component/buscador";
 
 import "../../styles/home.css";
 
+
+
 export const Home = () => {
 	const { store, actions } = useContext(Context);
-
 
 	return (
 		<div>
@@ -23,7 +24,7 @@ export const Home = () => {
 			</div>
 			<div className="container border-top ">
 				<div className="card-group mt-5 ">
-					<div className="row row-cols-1 row-cols-md- g-4 ">
+					<div className=" row-cols-md-5 g-4 d-flex flex-row flex-nowrap overflow-auto">
 
 						<MotoCard />
 					</div>
