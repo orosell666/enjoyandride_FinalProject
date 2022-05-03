@@ -71,7 +71,9 @@ class Moto(db.Model):
             "priceday": self.priceday,
             "priceweek": self.priceweek,
             "telefono": self.telefono,
-            "email": self.email
+            "email": self.email,
+            "discount_weekend": self.discount_weekend,
+            "discount_week": self.discount_week
             
 
         }    

@@ -51,7 +51,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: JSON.stringify({ email: email, password: password }),
 				})
 					.then(resp => resp.json())
-					.then(data => setStore({ respuesta: data }))
+					.then(data => {
+						setStore({ respuesta: data })
+						localStorage.setItem("token", data.token)
+						localStorage.setItem("user_id", data.userID)
+					})
 					.catch(error => console.log("Error loading message from backend", error));
 
 
@@ -81,7 +85,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: moto
 				})
 					.then(resp => resp.json())
-					.then(data => setStore({ datosMoto: data }))
+					.then(data => {
+						setStore({ datosMoto: data })
+
+						getActions().cargarMotosUser(getStore().respuesta.userID);
+					})
 					.catch(error => console.log("Error loading message from backend", error))
 
 			},

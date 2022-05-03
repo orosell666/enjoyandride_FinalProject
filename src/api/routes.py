@@ -46,6 +46,27 @@ def login():
     }
     return jsonify(data_response), 200
 
+@api.route('/infouser', methods=['GET'])
+@jwt_required()
+def infoUser():
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+    
+    data_response = {
+        "status": True,
+        "email": user.email,
+        "userID": user.id,
+        "message": "conseguido!",
+        "color": "success",
+        "telefono": user.phonenumber,
+        "nombre": user.name,
+        "apellidos": user.lastName,
+        "direccion": user.adress,
+        "birthdate": user.birthdate,
+        "license": user.license
+    }
+    return jsonify(data_response), 200
+
 
 @api.route('/registroUsuarios', methods=['POST'])
 def registro():
