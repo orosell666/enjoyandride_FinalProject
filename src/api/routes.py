@@ -10,6 +10,8 @@ from datetime import datetime
 import cloudinary
 import cloudinary.uploader
 import json
+from sqlalchemy import desc
+
 
 
 
@@ -107,7 +109,7 @@ def registroMoto():
     
     user_id = get_jwt_identity()
     data = request.form
-
+    id = data.get('id')
     power = data.get('power')
     priceday = data.get('priceday')
     priceweek = data.get('priceweek')
@@ -125,11 +127,12 @@ def registroMoto():
     tipo_id = data.get('tipo_id')
 
     moto = Moto(power= power, priceday= priceday, priceweek= priceweek, discount_weekend= discount_weekend, discount_week= discount_week, comment= comment, provincia= provincia, 
-    ciudad= ciudad, email= email, telefono= telefono,  modelo_id= modelo_id, tipo_id= tipo_id, user_id= user_id, matricula= matricula, image_url= image_url)
+    ciudad= ciudad, email= email, telefono= telefono,  modelo_id= modelo_id, tipo_id= tipo_id, user_id= user_id, matricula= matricula, image_url= image_url, id= id), 
     db.session.add(moto)
     db.session.commit()
 
     data_response= {
+        "id": moto.id,
         "power": moto.power,
         "priceday": moto.priceday,
         "priceweek": moto.priceweek,
@@ -247,7 +250,7 @@ def handle_upload():
 @api.route('/recuperaMotos', methods=['GET'])
 def recuperaMotos():
     
-    motos = Moto.query.all()
+    motos = Moto.query.order_by(desc(Moto.id)).limit(5).all()
      
     all_motos = list(map(lambda x: x.serialize(), motos))
 
@@ -259,6 +262,24 @@ def recuperaMotos():
 def recuperaMotosUser(user_id):
     
     motos = Moto.query.filter_by(user_id = user_id).all()
+     
+    all_motos = list(map(lambda x: x.serialize(), motos))
+
+    return jsonify(all_motos), 200
+
+
+@api.route('/motofiltradaprovincia/<provincia>' , methods=['GET'])
+def FilterMotos(provincia):
+
+    motos = Moto.query(Moto.provincia).group_by(Moto.provincia).all()
+
+    all_motos = list(map(lambda x: x.serialize(), motos))
+
+    return jsonify(all_motos), 200
+
+@api.route('/selectedmoto/<int:id>', methods=['GET'])
+def MotoSelected():
+    motos = Moto.query.filter_by(id = id).all()
      
     all_motos = list(map(lambda x: x.serialize(), motos))
 

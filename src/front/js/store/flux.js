@@ -23,7 +23,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(resp => resp.json())
 
 					.then(data => setStore({ motos: data }))
-				// .catch(error => console.log("Error al recuperar las motos", error));
+					.catch(error => console.log("Error al recuperar las motos", error));
 
 			},
 
@@ -33,7 +33,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(resp => resp.json())
 
 					.then(data => setStore({ motosUser: data }))
-				// .catch(error => console.log("Error al recuperar las motos", error));
+					.catch(error => console.log("Error al recuperar las motos", error));
+
+			},
+
+			cargarMotosFiltradas: async () => {
+
+				await fetch(process.env.BACKEND_URL + "/api/motofiltradaprovincia" + provincia)
+					.then(resp => resp.json())
+
+					.then(data => setStore({ motos: data }))
+					.catch(error => console.log("Error al recuperar las motos", error));
+
+			},
+
+			cargarMotoSeleccionada: async (id) => {
+
+				await fetch(process.env.BACKEND_URL + "/api/selectedmoto" + id)
+					.then(resp => resp.json())
+
+					.then(data => setStore({ motos: data }))
+					.catch(error => console.log("Error al recuperar las motos", error));
 
 			},
 

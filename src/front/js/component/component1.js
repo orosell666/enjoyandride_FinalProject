@@ -8,7 +8,7 @@ export const Component1 = () => {
 
             </div>
             <div className="text-center mt-1">
-                <h3>Bienvenido a ENJOY&RIDE,tu portal de<br />
+                <h3>Bienvenido a ENJOY&RIDE, tu portal de<br />
                     alquiler de motos  para  disfrutar estés donde<br />
                     estés de lo que más te gusta, montar en moto! </h3>
 

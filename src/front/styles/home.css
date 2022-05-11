@@ -6,7 +6,7 @@
     on that page only (the ones not reused in other pages).
 */
 .title {
-  color: #198754;
+  color: white;
 
   margin-right: 200px;
   font-family: "Mulish", sans-serif;
@@ -14,15 +14,16 @@
 .and {
   color: whitesmoke;
 }
-
+h2 {
+  color: #585a58d1;
+}
 h3,
-h2,
 h1 {
   font-family: "Fira Sans", sans-serif;
   color: #5aae1a;
 }
 .navbar {
-  background-color: #131312d1;
+  background-color: #585a58d1;
 }
 
 .homeimage {
