@@ -16,7 +16,7 @@ export const MotoSelected = () => {
 
     return (
 
-        store.motos.map((value, index) => {
+        store.motos.map((value, id) => {
 
             const footerposition = {
                 pb: "20px"
@@ -36,7 +36,7 @@ export const MotoSelected = () => {
                             <img src={value.image_url} className=" border border-success rounded mt-5" id={`id${value.id}`} style={imageSize} alt="Moto" />
                         </div>
                         <div className="d-flex justify-content-evenly mt-5">
-                            <div className="container " >
+                            <div className="container-lg " >
                                 <form className="row g-3">
                                     <div className="col-md-5 ms-5 ps-5">
                                         <label htmlFor="inputEmail5" className="form-label text"><strong>Marca:</strong></label>
@@ -80,6 +80,10 @@ export const MotoSelected = () => {
                                     <div className="col-md-5 ms-5 ps-5">
                                         <label htmlFor="inputPassword5" className="form-label text"><strong>Email:</strong></label>
                                         <input type="text" readonly className="form-control-plaintext border-bottom" id={`id${value.id}`} value={value.email} />
+                                    </div>
+                                    <div className="col-md-5 ms-5 ps-5">
+                                        <label htmlFor="inputPassword5" className="form-label text"><strong>Comentarios:</strong></label>
+                                        <input type="text" readonly className="form-control-plaintext border-bottom" id={`id${value.id}`} value={value.comment} />
                                     </div>
 
                                 </form>

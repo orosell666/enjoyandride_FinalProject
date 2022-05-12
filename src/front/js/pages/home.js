@@ -22,7 +22,7 @@ export const Home = () => {
 			<h2 className="text-center">Últimas motos registradas</h2>
 			<div className="container border-top ">
 				<div className="card-group mt-5 ">
-					<div className=" row-cols-md-5 g-4 d-flex flex-row flex-nowrap overflow-auto">
+					<div className=" row g-4 d-flex flex-row flex-nowrap overflow-auto">
 
 						<MotoCard />
 					</div>

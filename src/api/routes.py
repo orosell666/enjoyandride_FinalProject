@@ -279,7 +279,7 @@ def FilterMotos(provincia):
 
 @api.route('/selectedmoto/<int:id>', methods=['GET'])
 def MotoSelected():
-    motos = Moto.query.filter_by(id = id).all()
+    motos = Moto.query.filter_by(id = id)
      
     all_motos = list(map(lambda x: x.serialize(), motos))
 
