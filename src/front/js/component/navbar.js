@@ -36,7 +36,7 @@ export const Navbar = () => {
 
 
 	return (
-		<nav className="navbar ">
+		<nav className="navbar navbar-expand-lg">
 
 			<div className="container">
 				<Link to="/">

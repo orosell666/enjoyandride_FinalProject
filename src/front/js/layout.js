@@ -12,6 +12,8 @@ import { RegisterMoto } from "./pages/registroMoto";
 import { Dashboard } from "./pages/dashboard";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import { BuscadorMotos } from "./pages/buscadormotos";
+import { MotoSelected } from "./pages/selectedmoto";
 
 
 //create your first component
@@ -44,9 +46,16 @@ const Layout = () => {
 						<Route exact path="/registroMoto">
 							<RegisterMoto />
 						</Route>
+						<Route exact path="/buscador">
+							<BuscadorMotos />
+						</Route>
+						<Route exact path="/selectedmoto">
+							<MotoSelected />
+						</Route>
+
 
 						<Route>
-							<h1>Not found!</h1>
+							<h2>Not found!</h2>
 						</Route>
 					</Switch>
 					<Footer />

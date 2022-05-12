@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
-
+import { Link, useHistory } from "react-router-dom";
 import { Component1 } from "../component/component1";
 import { MotoCard } from "../component/motocard";
 import { Buscador } from "../component/buscador";
@@ -19,15 +19,18 @@ export const Home = () => {
 			<div className="container">
 				<Component1 />
 			</div>
-			<div className="container">
-				<Buscador />
-			</div>
+			<h2 className="text-center">Últimas motos registradas</h2>
 			<div className="container border-top ">
 				<div className="card-group mt-5 ">
-					<div className=" row-cols-md-5 g-4 d-flex flex-row flex-nowrap overflow-auto">
+					<div className=" row g-4 d-flex flex-row flex-nowrap overflow-auto">
 
 						<MotoCard />
 					</div>
+					<div className="container d-flex justify-content-center mt-5">
+						<Link to="/buscador">
+							<button className="btn btn-success col">Buscar más motos</button>
+						</Link></div>
+
 				</div>
 			</div>
 

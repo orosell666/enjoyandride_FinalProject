@@ -29,7 +29,7 @@ export const RegisterMoto = () => {
     const Register = () => {
         const formData = new FormData();
 
-        for (var key in moto) {
+        for (let key in moto) {
             formData.append(key, moto[key]);
         }
         formData.append("file", files[0]);
@@ -73,7 +73,7 @@ export const RegisterMoto = () => {
                             <option disabled selected >Selecciona Modelo</option>
                             {
                                 modelos.map((value, index) => {
-                                    return <option value={value.id}>{value.name}</option>
+                                    return <option value={value.modelo_id}>{value.name}</option>
 
                                 })
                             }
