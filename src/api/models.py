@@ -34,8 +34,8 @@ class Moto(db.Model):
     discount_weekend = db.Column(db.Integer, nullable=True)
     discount_week = db.Column(db.Integer, nullable=True)
     comment = db.Column(db.String(300), nullable=True)
-    provincia = db.Column(db.String(300), nullable=False)
-    ciudad = db.Column(db.String(300), nullable=False)
+    provincia = db.Column(db.String(300), nullable=True)
+    ciudad = db.Column(db.String(300), nullable=True)
     image_url = db.Column(db.String(300), nullable=False)
     email = db.Column(db.String, nullable=True)
     telefono = db.Column(db.String, nullable=True)
@@ -49,6 +49,10 @@ class Moto(db.Model):
     modelo_id = db.Column(db.Integer, db.ForeignKey('modelo.id'),
         nullable=False) 
     modelo = db.relationship('Modelo', backref='modelo', lazy=True, cascade = "all,delete")
+
+    city_id = db.Column(db.Integer, db.ForeignKey('ciudad.id'),
+        nullable=True) 
+    city = db.relationship('Ciudad', backref='moto', lazy=True, cascade = "all,delete")
 
     tipo_id = db.Column(db.Integer, db.ForeignKey('tipo.id'),
         nullable=False) 
@@ -66,8 +70,8 @@ class Moto(db.Model):
             "id" : self.id,
             "power":  self.power,
             "image_url" : self.image_url,
-            "provincia" : self.provincia,
-            "ciudad" : self.ciudad,
+            "provincia" : self.city.provincia.name if self.city else "",
+            "ciudad" : self.city.name if self.city else "",
             "priceday": self.priceday,
             "priceweek": self.priceweek,
             "telefono": self.telefono,
@@ -120,6 +124,42 @@ class Marca(db.Model):
     id = db.Column(db.Integer, primary_key=True, nullable=False )
     name = db.Column(db.String(120), nullable=False)
     modelo = db.relationship('Modelo', backref='marca', lazy=True, cascade = "all,delete")
+
+    
+
+    def __repr__(self):
+        return self.name
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            # do not serialize the password, its a security breach
+        }
+
+
+class Ciudad(db.Model):
+    
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(120), nullable=False)
+    provincia_id = db.Column(db.Integer, db.ForeignKey('provincia.id'),
+       nullable=False)
+    
+    def __repr__(self):
+        return  self.name
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+        }
+
+
+class Provincia(db.Model):
+   
+    id = db.Column(db.Integer, primary_key=True, nullable=False )
+    name = db.Column(db.String(120), nullable=False)
+    ciudad = db.relationship('Ciudad', backref='provincia', lazy=True, cascade = "all,delete")
 
     
 

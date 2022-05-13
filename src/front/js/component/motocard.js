@@ -8,7 +8,7 @@ export const MotoCard = () => {
     useEffect(() => {
 
         actions.cargarMotos();
-        actions.generateToken();
+
 
     }, [])
 
@@ -37,7 +37,7 @@ export const MotoCard = () => {
                         <div class="card-footer bg-transparent border-success" style={footerposition}>
 
                             <div className="ms-3 me-3">
-                                <Link to="/selectedmoto">
+                                <Link to={`/selectedmoto/${value.id}`}>
                                     <button className="btn btn-success">¡Reserva!</button>
                                 </Link></div>
 

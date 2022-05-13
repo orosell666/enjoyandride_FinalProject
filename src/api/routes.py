@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Moto, Marca, Modelo, Tipo
+from api.models import db, User, Moto, Marca, Modelo, Tipo, Ciudad, Provincia
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
@@ -109,7 +109,6 @@ def registroMoto():
     
     user_id = get_jwt_identity()
     data = request.form
-    id = data.get('id')
     power = data.get('power')
     priceday = data.get('priceday')
     priceweek = data.get('priceweek')
@@ -125,22 +124,20 @@ def registroMoto():
     matricula = data.get('matricula')
     modelo_id = data.get('modelo_id')
     tipo_id = data.get('tipo_id')
-
-    moto = Moto(power= power, priceday= priceday, priceweek= priceweek, discount_weekend= discount_weekend, discount_week= discount_week, comment= comment, provincia= provincia, 
-    ciudad= ciudad, email= email, telefono= telefono,  modelo_id= modelo_id, tipo_id= tipo_id, user_id= user_id, matricula= matricula, image_url= image_url, id= id), 
+    print(data)
+    moto = Moto(power= power, priceday= priceday, priceweek= priceweek, discount_weekend= discount_weekend, discount_week= discount_week, comment= comment, 
+     email= email, telefono= telefono,  modelo_id= modelo_id, tipo_id= tipo_id, user_id= user_id, matricula= matricula, image_url= image_url), 
     db.session.add(moto)
     db.session.commit()
 
     data_response= {
-        "id": moto.id,
+        "id": moto.id, 
         "power": moto.power,
         "priceday": moto.priceday,
         "priceweek": moto.priceweek,
         "discount_weekend": moto.discount_weekend,
         "disocunt_week": moto.discount_week,
         "comment": moto.comment,
-        "provincia": moto.provincia,
-        "ciudad": moto.ciudad,
         "email": moto.email,
         "telefono": moto.telefono,
         "imagen": moto.image_url,
@@ -278,9 +275,29 @@ def FilterMotos(provincia):
     return jsonify(all_motos), 200
 
 @api.route('/selectedmoto/<int:id>', methods=['GET'])
-def MotoSelected():
-    motos = Moto.query.filter_by(id = id)
+def MotoSelected(id):
+    moto = Moto.query.get(id)
      
-    all_motos = list(map(lambda x: x.serialize(), motos))
+    # all_motos = list(map(lambda x: x.serialize(), motos))
 
-    return jsonify(all_motos), 200
+    return jsonify(moto.serialize()), 200
+
+@api.route('/provincia', methods=['GET'])
+def getProvincia():
+    
+    provincias = Provincia.query.all()
+    listadoProvincias = []
+    for provincia in provincias:
+        listadoProvincias.append(provincia.serialize()) 
+
+    return jsonify(listadoProvincias), 200
+
+@api.route('/ciudad/<provincia>', methods=['GET'])
+def getCiudades(provincia):
+    
+    ciudades = Ciudad.query.filter_by(provincia_id = provincia)
+    listadoCiudades = []
+    for ciudad in ciudades:
+        listadoCiudades.append(ciudad.serialize()) 
+
+    return jsonify(listadoCiudades), 200

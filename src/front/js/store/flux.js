@@ -11,6 +11,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 
+
 		},
 
 
@@ -47,14 +48,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			},
 
-			cargarMotoSeleccionada: async (id) => {
+			cargarMotoSeleccionada: (id) => {
 
-				await fetch(process.env.BACKEND_URL + "/api/selectedmoto" + id)
+				const response = fetch(process.env.BACKEND_URL + "/api/selectedmoto/" + id)
 					.then(resp => resp.json())
 
-					.then(data => setStore({ motos: data }))
-					.catch(error => console.log("Error al recuperar las motos", error));
-
+				return response
 			},
 
 			generateToken: (email, password) => {

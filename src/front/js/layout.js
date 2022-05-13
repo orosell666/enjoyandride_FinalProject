@@ -49,7 +49,7 @@ const Layout = () => {
 						<Route exact path="/buscador">
 							<BuscadorMotos />
 						</Route>
-						<Route exact path="/selectedmoto">
+						<Route exact path="/selectedmoto/:id">
 							<MotoSelected />
 						</Route>
 

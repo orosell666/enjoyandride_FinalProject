@@ -7,12 +7,15 @@ import { Redirect } from "react-router-dom";
 export const RegisterMoto = () => {
     const { actions, store } = useContext(Context);
     const [moto, setMoto] = useState({})
+    const [provincia, setProvincia] = useState([])
     const [files, setFiles] = useState(null);
     const [modelos, setModelos] = useState([])
     const [marcas, setMarcas] = useState([])
+    const [ciudades, setCiudades] = useState([])
     useEffect(() => {
         getModelos()
         getMarcas()
+        getProvincias()
     }, [])
     const getModelos = () => {
         fetch(process.env.BACKEND_URL + "/api/modelo")
@@ -24,6 +27,18 @@ export const RegisterMoto = () => {
         fetch(process.env.BACKEND_URL + "/api/marca")
             .then((res) => res.json())
             .then((res) => setMarcas(res))
+            .catch((error) => console.error(error));
+    }
+    const getProvincias = () => {
+        fetch(process.env.BACKEND_URL + "/api/provincia")
+            .then((res) => res.json())
+            .then((res) => setProvincia(res))
+            .catch((error) => console.error(error));
+    }
+    const getCiudades = (id) => {
+        fetch(process.env.BACKEND_URL + "/api/ciudad/" + id)
+            .then((res) => res.json())
+            .then((res) => setCiudades(res))
             .catch((error) => console.error(error));
     }
     const Register = () => {
@@ -136,11 +151,35 @@ export const RegisterMoto = () => {
                     <div className="row">
                         <div className="col mt-2">
                             <label htmlFor="formGroupExampleInput" className="form-label text">Provincia<strong className="redDot"> *</strong></label>
-                            <input type="text" className="form-control text-muted" placeholder="" aria-label="First name" name="provincia" onChange={(e) => changeData(e)} />
+                            <select className="form-select text-muted" aria-label="Default select example" name="provincia" onChange={(e) => {
+                                changeData(e)
+                                getCiudades(e.target.value)
+                            }}>
+                                <option disabled selected >Selecciona Provincia:</option>
+                                {
+                                    provincia.map((value, index) => {
+                                        return <option value={value.id}>{value.name}</option>
+
+                                    })
+                                }
+
+                            </select>
                         </div>
                         <div className="col mt-2">
                             <label htmlFor="formGroupExampleInput" className="form-label text">Ciudad<strong className="redDot"> *</strong></label>
-                            <input type="text" className="form-control text-muted" placeholder="" aria-label="Last name" name="ciudad" onChange={(e) => changeData(e)} />
+                            <select className="form-select text-muted" aria-label="Default select example" name="ciudad" onChange={(e) => {
+                                changeData(e)
+
+                            }}>
+                                <option disabled selected >Selecciona Ciudad:</option>
+                                {
+                                    ciudades.map((value, index) => {
+                                        return <option value={value.id}>{value.name}</option>
+
+                                    })
+                                }
+
+                            </select>
                         </div>
                     </div>
                     <div className="row">
